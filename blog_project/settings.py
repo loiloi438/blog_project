@@ -112,6 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'fr'
 TIME_ZONE = 'Africa/Brazzaville'
+USE_L10N = True
 
 USE_I18N = True
 USE_TZ = True

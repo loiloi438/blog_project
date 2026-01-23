@@ -1,0 +1,990 @@
+[
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 2,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 2,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 2,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 2,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 3,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 3,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 3,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 3,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 4,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 4,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 4,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 4,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 5,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 5,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 5,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 5,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 6,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 6,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 6,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 6,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add Article",
+    "content_type": 7,
+    "codename": "add_article"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change Article",
+    "content_type": 7,
+    "codename": "change_article"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete Article",
+    "content_type": 7,
+    "codename": "delete_article"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view Article",
+    "content_type": 7,
+    "codename": "view_article"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add Commentaire",
+    "content_type": 8,
+    "codename": "add_comment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change Commentaire",
+    "content_type": 8,
+    "codename": "change_comment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete Commentaire",
+    "content_type": 8,
+    "codename": "delete_comment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view Commentaire",
+    "content_type": 8,
+    "codename": "view_comment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add Like",
+    "content_type": 9,
+    "codename": "add_like"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change Like",
+    "content_type": 9,
+    "codename": "change_like"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete Like",
+    "content_type": 9,
+    "codename": "delete_like"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view Like",
+    "content_type": 9,
+    "codename": "view_like"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$WMs919DNH1Wbh4GtsEDQgc$/pjUtmJzWqLJLPMm47z5zSwzSddGTGO9jvY2pi78hQk=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@blog.local",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-01-21T12:57:56.751Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$yngSmDhvLsqN5cH6ze0ZN7$f6aQSjq3f7ZokA6hGJJqEWTYn3xRIAXVoMH4bskoCWA=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "jean",
+    "first_name": "",
+    "last_name": "",
+    "email": "jean@blog.local",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-21T12:57:58.212Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$jy2fm8FRLtUg8e7KJeEaqT$WIXnwPE0n9M8W9TrNaeeYqeQt8rJ3ckeu86mWdqHJL0=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "marie",
+    "first_name": "",
+    "last_name": "",
+    "email": "marie@blog.local",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-21T12:57:59.293Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$nDDqbtF2lLmYH8wnpxEFm2$x9p+nshozBwDwAFChNa76VVoZvYL11DUfP+pvQFX8o0=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "pierre",
+    "first_name": "",
+    "last_name": "",
+    "email": "pierre@blog.local",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-21T12:58:00.989Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$Xf42Ybekjycf268aJMqRJa$gVnkyYed4e3EAwOVJY2o20JgyTdL3EeweYANJslkbGs=",
+    "last_login": "2026-01-22T08:04:29.303Z",
+    "is_superuser": true,
+    "username": "mouanga",
+    "first_name": "",
+    "last_name": "",
+    "email": "mourangatresor673@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-01-21T13:09:27.251Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$T4MrLWuZB73pbdTkfrQGDW$PnYSo/q9i8nbvYTBf14Gg1TAYcccaY337GJRe0uoxiY=",
+    "last_login": "2026-01-22T12:22:32.808Z",
+    "is_superuser": false,
+    "username": "autotest",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-22T12:19:20.926Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "blog",
+    "model": "article"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "blog",
+    "model": "comment"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "blog",
+    "model": "like"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "g78ak8ecbbeypp44epa9a31fktls6gnt",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlmy1_GHkp4zWLvZDQ4gW4qTCnF3iJQC2jcz76UybmvJW5clz6zOKqjT70Y4PqTugO9Yb02Pra7LTHpX9EG7vjaW5-Vw_w4K9vKtgSQGScEEsTFRig4HA8zOjoGsS5I8uAGdmUAi0-ADOGFPUQAYJ6_eH9dqN8s:1vitho:5JoxsHb5PQPZhlKyJObZR2jXxT9T5wGRLJcy_uBG06Y",
+    "expire_date": "2026-02-05T12:22:32.827Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "l1v3jhk2daux1nf4h33yfqdr1tfxqbxt",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlmy1_GHkp4zWLvZDQ4gW4qTCnF3iJQC2jcz76UybmvJW5clz6zOKqjT70Y4PqTugO9Yb02Pra7LTHpX9EG7vjaW5-Vw_w4K9vKtgSQGScEEsTFRig4HA8zOjoGsS5I8uAGdmUAi0-ADOGFPUQAYJ6_eH9dqN8s:1vitfK:moYuM47JB_WnNxdtFrJzB9kGTTGy9P6Gn_UH4cRh4n8",
+    "expire_date": "2026-02-05T12:19:58.049Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "lvqhjucpbetfsyrkgfvgeojckpjt2qqa",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2pAhEKAu3XsGMjMMUjUlKe2q8e6GpAvd_vfeP1TCfatp77KmOaur8uryuxHyS5YB8hOXR9Pclm2dSQ9Fn7Tre8vyvp3u30HFXkdNDnDKKHYSLgWDB5etzxEAYgwM4BwZyzay9RCLweICSSDviicj6vMF99o4LA:1viq0c:wZRrqkN78l12cNchP1j_JEcppl_AKfAj8GuBh2ZCqQc",
+    "expire_date": "2026-02-05T08:25:42.208Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "qe4rb4vwqf4pg9o77xp2cgl6q056z8gq",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlmy1_GHkp4zWLvZDQ4gW4qTCnF3iJQC2jcz76UybmvJW5clz6zOKqjT70Y4PqTugO9Yb02Pra7LTHpX9EG7vjaW5-Vw_w4K9vKtgSQGScEEsTFRig4HA8zOjoGsS5I8uAGdmUAi0-ADOGFPUQAYJ6_eH9dqN8s:1viten:wH_AoOo5nBaVGmNObid41r2D530cq8pO-x72RvTdCcA",
+    "expire_date": "2026-02-05T12:19:25.464Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "r4ddympokaz9fqml8iv755h2nqlj3kem",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2pAhEKAu3XsGMjMMUjUlKe2q8e6GpAvd_vfeP1TCfatp77KmOaur8uryuxHyS5YB8hOXR9Pclm2dSQ9Fn7Tre8vyvp3u30HFXkdNDnDKKHYSLgWDB5etzxEAYgwM4BwZyzay9RCLweICSSDviicj6vMF99o4LA:1vipmp:29IAt24qUQ3aaW31-oJ6HBnbFxjtDe0ITxv4T1HhbaE",
+    "expire_date": "2026-02-05T08:11:27.670Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "y34uwsguls1ey3ivef8etm0j9g7l40hm",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hCYFpy6dN8zNDAzSNVAUtqV8e7apAvd_vfef6kpbGuetibLNLO6KKdOv1sM9JCyA76HcquaalmXOepd0Qdteqwsz-vh_h3k0PK37sCDiCNPQmTFdpQgCBuwxiHFmMAmzz0BsO3BmOTREg6I3mPE86DeH_tZN9A:1vipg5:0y6FLRukzDeb8DG_2K-jxeSB9McQY1eBQ3MT58b1o9g",
+    "expire_date": "2026-02-05T08:04:29.315Z"
+  }
+},
+{
+  "model": "blog.article",
+  "pk": 1,
+  "fields": {
+    "title": "Bienvenue sur mon blog!",
+    "content": "Ceci est mon premier article. Je suis ravi de partager mes pens�es et mes exp�riences avec vous!\n\nN'h�sitez pas � commenter et � participer � la discussion.",
+    "author": 1,
+    "cover_image": "",
+    "created_at": "2026-01-21T12:58:02.156Z",
+    "updated_at": "2026-01-21T12:58:02.156Z"
+  }
+},
+{
+  "model": "blog.article",
+  "pk": 2,
+  "fields": {
+    "title": "Comment d�marrer avec Django",
+    "content": "Django est un excellent framework Python pour d�velopper des applications web. Voici quelques conseils pour bien d�marrer:\n\n1. Installez Django avec pip\n2. Cr�ez un projet\n3. Cr�ez une application\n4. D�finissez vos mod�les\n5. Cr�ez les vues\n\nC'est facile!",
+    "author": 2,
+    "cover_image": "",
+    "created_at": "2026-01-21T12:58:02.181Z",
+    "updated_at": "2026-01-21T12:58:02.181Z"
+  }
+},
+{
+  "model": "blog.article",
+  "pk": 3,
+  "fields": {
+    "title": "Les meilleures pratiques en d�veloppement web",
+    "content": "La s�curit�, les performances et la maintenabilit� sont les trois piliers d'une bonne application web.\n\nDans cet article, nous discuterons de comment les atteindre dans votre projet.",
+    "author": 3,
+    "cover_image": "",
+    "created_at": "2026-01-21T12:58:02.216Z",
+    "updated_at": "2026-01-21T12:58:02.216Z"
+  }
+},
+{
+  "model": "blog.article",
+  "pk": 4,
+  "fields": {
+    "title": "Football: L'Impact de la Technologie VAR sur le Jeu",
+    "content": "La technologie VAR (Video Assistant Referee) a r�volutionn� le monde du football moderne. Introduite progressivement depuis 2016, elle a transform� la mani�re dont les arbitres prennent les d�cisions les plus cruciales du match.\n\nL'avantage principal du VAR r�side dans sa capacit� � corriger les erreurs manifestes des arbitres. Des situations comme les buts annul�s � tort, les penaltys non siffl�s ou les expulsions incorrectes peuvent d�sormais �tre r�vis�es. Cela apporte une plus grande �quit� au jeu et garantit que les r�sultats finaux sont bas�s sur des d�cisions justes.\n\nCependant, le VAR n'est pas sans critiques. Les arr�ts r�p�t�s du jeu pour v�rifier les d�cisions ralentissent le rythme des matchs et frustrent les fans. Certains puristes soutiennent que ces interruptions d�tournent de l'essence spontan�e du football. De plus, l'impl�mentation du VAR varie d'une ligue � l'autre, cr�ant une certaine incoh�rence.\n\nMalgr� ces pr�occupations, il est ind�niable que le VAR a am�lior� l'int�grit� comp�titive du football mondial. Les tournois majeurs comme la Coupe du Monde et la Ligue des Champions l'ont adopt� avec succ�s. � mesure que la technologie �volue, nous pouvons nous attendre � des am�liorations qui rendront le processus d'examen plus rapide et plus transparent.\n\nEn conclusion, le VAR repr�sente un progr�s significatif pour le football, malgr� ses d�fauts actuels. L'avenir du jeu d�pendra de la capacit� du sport � perfectionner cette technologie tout en pr�servant le spectacle et l'�motion qui rendent le football si captivant.",
+    "author": 1,
+    "cover_image": "",
+    "created_at": "2026-01-21T13:26:09.759Z",
+    "updated_at": "2026-01-21T13:26:09.760Z"
+  }
+},
+{
+  "model": "blog.article",
+  "pk": 5,
+  "fields": {
+    "title": "Les Meilleurs Buteurs de la CAN 2024",
+    "content": "La Coupe d'Afrique des Nations 2024 en C�te d'Ivoire a offert des spectacles remarquables, avec plusieurs attaquants qui se sont distingu�s par leurs performances exceptionnelles.\n\nParmi les grands buteurs du tournoi figurent certains des meilleurs talents du football africain. Ces joueurs ont d�montr� une finition clinique, une vision de jeu exceptionnelle et une capacit� � faire la diff�rence dans les moments cl�s.\n\nLes statistiques montrent une augmentation du nombre de buts marqu�s lors de cette �dition par rapport aux ann�es pr�c�dentes. Cela refl�te une �volution tactique des �quipes africaines, qui privil�gient d�sormais un jeu plus offensif et agressif.\n\nL'impact des meilleurs buteurs ne se limite pas aux statistiques. Ils ont souvent �t� les leaders de leurs �quipes, inspirant co�quipiers et supporters. Leur pr�sence sur le terrain a transform� le cours de nombreux matchs, cr�ant des moments m�morables qui resteront grav�s dans l'histoire du football africain.\n\nAu-del� des buts, ces joueurs ont �galement fourni des passes d�cisives cruciales, d�montrant une polyvalence offensive remarquable. Leur contribution totale a contribu� � faire de cette CAN un tournoi captivant et plein de suspense.\n\nLes performances individuelles des grands buteurs soulignent l'�volution constante du football africain et promettent des ann�es futures passionnantes pour la comp�tition continentale.",
+    "author": 1,
+    "cover_image": "",
+    "created_at": "2026-01-21T13:26:09.787Z",
+    "updated_at": "2026-01-21T13:26:09.787Z"
+  }
+},
+{
+  "model": "blog.article",
+  "pk": 6,
+  "fields": {
+    "title": "Musique Africaine: L'�volution du Grime et du Hip-Hop",
+    "content": "La musique africaine a connu une transformation remarquable au cours des deux derni�res d�cennies, notamment avec l'�mergence du grime et la popularit� croissante du hip-hop adapt� aux contextes locaux.\n\nLe grime, originaire d'Afrique du Sud et popularis� par des artistes comme Gqom, repr�sente une fusion unique de rythmes locaux et de beats modernes. Ce genre musical a transcend� les fronti�res continentales et a attir� l'attention des producteurs et des auditeurs mondiaux.\n\nLe hip-hop africain, quant � lui, s'est d�velopp� avec une identit� propre, refl�tant les r�alit�s sociales et culturelles sp�cifiques � chaque r�gion. Des artistes comme Nasty C, Stormzy et Wizkid ont utilis� le hip-hop comme plateforme pour exprimer leurs exp�riences et d�fier les normes sociales.\n\nL'innovation technologique a �galement jou� un r�le crucial dans cette �volution musicale. Les producteurs africains utilisent d�sormais des �quipements de studio de classe mondiale, leur permettant de cr�er des productions de qualit� internationale. Les plateformes num�riques comme Spotify et YouTube ont permis aux artistes africains de toucher une audience mondiale sans d�pendre des maisons de disques traditionnelles.\n\nLa collaboration internationale est devenue un trait distinctif de la musique africaine contemporaine. Des artistes africains travaillent r�guli�rement avec des producteurs internationaux, cr�ant des fusions sonores qui enrichissent le paysage musical global.\n\nCependant, malgr� ces succ�s, les artistes africains font toujours face � des d�fis en mati�re de r�mun�ration �quitable et de reconnaissance mondiale. L'industrie musicale africaine a besoin de plus d'infrastructure et de soutien pour favoriser une croissance durable.",
+    "author": 1,
+    "cover_image": "",
+    "created_at": "2026-01-21T13:26:09.812Z",
+    "updated_at": "2026-01-21T13:26:09.814Z"
+  }
+},
+{
+  "model": "blog.article",
+  "pk": 7,
+  "fields": {
+    "title": "Cuisine Africaine: Saveurs et Traditions Culinaires",
+    "content": "La cuisine africaine est l'une des plus riches et vari�es au monde, offrant une tapestrie de saveurs, de textures et de techniques culinaires mill�naires.\n\nChaque r�gion d'Afrique poss�de ses propres traditions culinaires distinctes, influenc�es par la g�ographie locale, le climat et l'histoire. De la cuisine m�diterran�enne du Maghreb aux plats �pic�s d'Afrique de l'Ouest, en passant par les rago�ts savoureux d'Afrique de l'Est, la diversit� est remarquable.\n\nLes ingr�dients fondamentaux de la cuisine africaine incluent les c�r�ales comme le mil, le sorgho et le ma�s, les l�gumineuses, les fruits et les l�gumes locaux. L'utilisation des �pices comme le cumin, le curcuma et le piment rouge ajoute une profondeur de saveur caract�ristique.\n\nLes techniques culinaires traditionnelles, comme la cuisson � la braise et l'utilisation de marmites en terre cuite, jouent un r�le crucial dans la pr�paration des plats. Ces m�thodes ancestrales ont �t� transmises de g�n�ration en g�n�ration, pr�servant l'essence authentique des recettes.\n\nLa cuisine africaine n'est pas seulement une question de nourriture; c'est un aspect fondamental de la culture et de l'identit�. Les repas sont souvent des occasions sociales importantes, r�unissant les familles et les communaut�s. La pr�paration et le partage des repas renforcent les liens sociaux et transmettent les valeurs culturelles.\n\nAvec la mondialisation, la cuisine africaine gagne en reconnaissance internationale. Des restaurants africains �mergent dans les grandes villes du monde, permettant aux gens d'explorer et d'appr�cier ces saveurs authentiques. Cependant, il est crucial de pr�server l'int�grit� et l'authenticit� de ces traditions culinaires face � la commercialisation croissante.",
+    "author": 1,
+    "cover_image": "",
+    "created_at": "2026-01-21T13:26:09.831Z",
+    "updated_at": "2026-01-21T13:26:09.831Z"
+  }
+},
+{
+  "model": "blog.article",
+  "pk": 8,
+  "fields": {
+    "title": "CAN 2024 C�te d'Ivoire: Moments M�morables et Surprises",
+    "content": "La Coupe d'Afrique des Nations 2024 en C�te d'Ivoire a offert un tournoi riche en �motions, en surprises et en performances m�morables que les fans n'oublieront pas de sit�t.\n\nD�s le d�but du tournoi, il �tait clair que cette �dition serait diff�rente. Les �quipes venues des quatre coins du continent africain ont apport� leur A-game, cr�ant des matchs captivants et des moments dramatiques.\n\nPlusieurs surprises ont marqu� le tournoi. Des �quipes consid�r�es comme outsiders ont impressionn� par leurs performances, remettant en question les pronostics pr�-tournoi. Ces performances inattendues ont d�montr� le niveau croissant de comp�titivit� dans le football africain.\n\nLes stades ivoiriens ont accueilli des supporters passionn�s qui ont cr�� une atmosph�re �lectrisante. La ferveur du public a souvent �t� un facteur d�cisif, motivant les joueurs et cr�ant des conditions de jeu intenses.\n\nSur le plan tactique, les �quipes ont d�montr� une grande sophistication. Les entra�neurs ont d�velopp� des strat�gies complexes pour contrer leurs adversaires, et les matchs se sont souvent jou�s sur des d�tails techniques fins.\n\nLes performances individuelles d'stars reconnues du football africain ont cohait� avec l'�mergence de nouveaux talents. Des jeunes joueurs ont profit� de la plateforme pour se faire remarquer, se positionnant pour des futures opportunit�s en Europe.\n\nFinalement, la CAN 2024 restera grav�e comme un tournoi qui a c�l�br� non seulement le talent du football africain, mais aussi l'unit�, la passion et l'esprit de comp�tition qui caract�risent le continent.",
+    "author": 1,
+    "cover_image": "",
+    "created_at": "2026-01-21T13:26:09.851Z",
+    "updated_at": "2026-01-21T13:26:09.851Z"
+  }
+},
+{
+  "model": "blog.article",
+  "pk": 9,
+  "fields": {
+    "title": "�v�nements Culturels Majeurs d'Afrique en 2024",
+    "content": "L'ann�e 2024 a �t� marqu�e par de nombreux �v�nements culturels majeurs qui ont mis en avant la richesse et la diversit� du patrimoine africain.\n\nLes festivals musicaux africains ont continu� � attirer des foules internationales. Des �v�nements comme le Festival de F�s au Maroc et le Sauti za Busara en Tanzanie ont offert des plateformes pour les artistes �mergents et �tablis de d�montrer leur talent.\n\nLes expositions d'art africain contemporain ont gagn� en visibilit� sur la sc�ne mondiale. Les galeries d'art � travers le continent ont pr�sent� des �uvres qui explorent les r�alit�s contemporaines africaines, d�fient les st�r�otypes et interrogent l'identit�.\n\nLes festivals litt�raires africains ont �galement prosp�r�, avec des auteurs africains gagnant une reconnaissance internationale croissante. Ces �v�nements ont servi de catalyseur pour la promotion de la litt�rature africaine et la cr�ation de dialogues sur des th�mes universels.\n\nLe patrimoine historique et arch�ologique a re�u une attention particuli�re avec plusieurs restaurations de sites culturels majeurs. Ces efforts visaient � pr�server l'h�ritage africain pour les g�n�rations futures.\n\nLes initiatives de pr�servation du patrimoine immat�riel, notamment les traditions orales et les pratiques culturelles ancestrales, ont �galement �t� au c�ur de nombreux projets culturels.\n\nCes �v�nements ont collectivement contribu� � renforcer l'affirmation culturelle africaine et � red�finir la narration africaine sur la sc�ne mondiale.",
+    "author": 1,
+    "cover_image": "",
+    "created_at": "2026-01-21T13:26:09.865Z",
+    "updated_at": "2026-01-21T13:26:09.865Z"
+  }
+},
+{
+  "model": "blog.article",
+  "pk": 10,
+  "fields": {
+    "title": "Sports: Les Athl�tes Africains Brillent au Niveau Mondial",
+    "content": "Les athl�tes africains ont continu� � se d�marquer sur la sc�ne sportive mondiale en 2024, d�montrant leur excellence dans divers domaines sportifs.\n\nL'athl�tisme africain, en particulier, a connu des performances exceptionnelles. Les coureurs de fond et les sprinters africains ont remport� de nombreuses m�dailles dans les comp�titions internationales, solidifiant la r�putation du continent dans ce sport.\n\nAu-del� de l'athl�tisme, les athl�tes africains se sont distingu�s dans le tennis, le boxe, le cyclisme et d'autres disciplines. Cette diversit� sportive refl�te le talent multidimensionnel pr�sent en Afrique.\n\nLes jeux olympiques et les championnats mondiaux ont offert des plateformes o� les athl�tes africains ont pu d�montrer leur potentiel. Ces comp�titions ont non seulement produit des r�sultats remarquables mais ont aussi inspir� la prochaine g�n�ration d'athl�tes.\n\nL'investissement dans les infrastructures sportives et la formation � travers le continent a port� ses fruits. Les gouvernements et les organisations sportives ont reconnu l'importance du sport comme vecteur de d�veloppement national et de fiert� continentale.\n\nMalgr� ces succ�s, les athl�tes africains continuent de faire face � des d�fis en mati�re de financement et de soutien. L'infrastructure d'entra�nement, bien qu'am�lior�e, reste in�gale � travers le continent.\n\nLes histoires de succ�s des athl�tes africains inspirent les jeunes et d�montrent que l'excellence est possible ind�pendamment des origines g�ographiques. Ces performances jettent les bases pour une domination sportive africaine accrue � l'avenir.",
+    "author": 1,
+    "cover_image": "",
+    "created_at": "2026-01-21T13:26:09.903Z",
+    "updated_at": "2026-01-21T13:26:09.903Z"
+  }
+},
+{
+  "model": "blog.article",
+  "pk": 11,
+  "fields": {
+    "title": "Innovation Technologique en Afrique: Le Secteur Tech en Expansion",
+    "content": "Le secteur technologique en Afrique conna�t une croissance explosive, positionnant le continent comme un centre d'innovation mondiale �mergent.\n\nLes startups africaines ont lev� des capitaux record en 2024, attirant les investissements des capital-risqueurs mondiaux. Ces entreprises innovantes r�solvent des probl�mes locaux avec des solutions technologiques cr�atives, du fintech � l'agritech.\n\nLe d�veloppement des infrastructures num�riques, notamment l'expansion de l'acc�s � Internet haut d�bit et la prolif�ration des appareils mobiles, a cr�� un �cosyst�me propice � l'innovation technologique.\n\nLes centres technologiques et les hubs d'innovation ont prolif�r� dans les grandes villes africaines, cr�ant des espaces collaboratifs o� les entrepreneurs, les d�veloppeurs et les investisseurs peuvent se r�unir et partager des id�es.\n\nL'adoption de l'intelligence artificielle et du machine learning en Afrique ouvre de nouvelles possibilit�s dans domaines comme la sant�, l'agriculture et l'�ducation. Les solutions bas�es sur l'IA adapt�es au contexte africain pr�sentent d'�normes potentiels.\n\nLes gouvernements africains ont �galement reconnu l'importance du secteur technologique pour la croissance �conomique et l'emploi. De nombreux gouvernements ont mis en place des politiques favorables aux startups et aux innovateurs technologiques.\n\nCependant, des d�fis subsistent, notamment le manque de financement continu et la n�cessit� de d�velopper davantage de talents technologiques qualifi�s. Malgr� ces obstacles, le momentum du secteur technologique africain est incontestable.",
+    "author": 1,
+    "cover_image": "",
+    "created_at": "2026-01-21T13:26:09.994Z",
+    "updated_at": "2026-01-21T13:26:09.994Z"
+  }
+},
+{
+  "model": "blog.article",
+  "pk": 12,
+  "fields": {
+    "title": "Environnement et Changement Climatique: Initiatives Africaines",
+    "content": "L'Afrique, malgr� sa contribution mineure au changement climatique mondial, est l'une des r�gions les plus affect�es par ses impacts d�vastateurs.\n\nLes s�cheresses prolong�es, les inondations extr�mes et la d�gradation des terres menacent la s�curit� alimentaire et les moyens de subsistance de millions d'Africains. Face � ces d�fis, le continent a pris plusieurs initiatives pour att�nuer et s'adapter au changement climatique.\n\nLe projet de la Grande Muraille Verte en Afrique de l'Ouest et du Sahel vise � lutter contre la d�sertification et � restaurer les terres d�grad�es. Cet ambitieux projet transfrontalier engage plusieurs pays et d�montre l'engagement africain envers la restauration environnementale.\n\nLes initiatives d'�nergie renouvelable gagnent du terrain en Afrique. L'�nergie solaire, �olienne et hydro�lectrique offrent des alternatives durables aux combustibles fossiles, r�duisant ainsi les �missions de carbone.\n\nLa conservation de la biodiversit� africaine reste une priorit�. Les aires prot�g�es et les r�serves naturelles jouent un r�le crucial dans la pr�servation des esp�ces menac�es et la maintien des �cosyst�mes essentiels.\n\nLes gouvernements africains participent activement aux n�gociations climatiques internationales, plaidant pour une action mondiale plus ambitieuse et une juste r�partition des responsabilit�s climatiques.\n\nL'�ducation environnementale et la sensibilisation communautaire jouent �galement un r�le important dans la promotion de pratiques durables en Afrique.\n\nMalgr� les efforts, le continent a besoin d'une augmentation significative du financement climatique et du soutien technologique pour atteindre ses objectifs de durabilit�.",
+    "author": 1,
+    "cover_image": "",
+    "created_at": "2026-01-21T13:26:10.074Z",
+    "updated_at": "2026-01-21T13:26:10.074Z"
+  }
+},
+{
+  "model": "blog.article",
+  "pk": 13,
+  "fields": {
+    "title": "�ducation en Afrique: Transformations et D�fis",
+    "content": "L'�ducation en Afrique conna�t une transformation profonde, avec des initiatives visant � am�liorer l'acc�s, la qualit� et l'�quit� de l'apprentissage.\n\nMalgr� les progr�s r�alis�s dans l'expansion de l'acc�s � l'�ducation, des d�fis importants subsistent. Des millions d'enfants africains demeurent en dehors du syst�me scolaire, limitant leur potentiel de d�veloppement future.\n\nL'int�gration de la technologie dans l'�ducation offre des solutions prometteuses. Les plateformes d'apprentissage en ligne, les salles de classe num�riques et les contenus �ducatifs interactifs transforment la mani�re dont les �tudiants apprennent.\n\nLa formation des enseignants est cruciale pour am�liorer la qualit� de l'�ducation. De nombreux pays africains investissent dans le d�veloppement professionnel continu des enseignants pour am�liorer les r�sultats d'apprentissage.\n\nL'�galit� des genres dans l'�ducation reste un objectif important. Bien que l'acc�s des filles � l'�ducation se soit am�lior�, des disparit�s subsistent dans certaines r�gions.\n\nL'enseignement technique et professionnel gagne en reconnaissance comme voie essentielle pour pr�parer les jeunes aux exigences du march� du travail moderne.\n\nLes universit�s africaines jouent un r�le croissant dans la recherche et l'innovation, contribuant � l'avancement des connaissances et au d�veloppement socio-�conomique.\n\nL'�ducation aux comp�tences du XXIe si�cle, incluant la pens�e critique, la cr�ativit� et la collaboration, devient de plus en plus importante dans le curriculum africain.",
+    "author": 1,
+    "cover_image": "",
+    "created_at": "2026-01-21T13:26:10.131Z",
+    "updated_at": "2026-01-21T13:26:10.131Z"
+  }
+},
+{
+  "model": "blog.article",
+  "pk": 14,
+  "fields": {
+    "title": "Sant� et Bien-�tre: Progr�s Africains dans le Secteur M�dical",
+    "content": "Le secteur de la sant� en Afrique a enregistr� des progr�s significatifs, bien que des d�fis persistants demeurent.\n\nL'acc�s aux services de sant� de base s'est am�lior� dans de nombreuses r�gions, gr�ce aux efforts des gouvernements et des organisations internationales. Cependant, les disparit�s d'acc�s entre les zones urbaines et rurales demeurent significatives.\n\nL'adoption de la t�l�m�decine r�volutionne la prestation des services de sant� en Afrique, permettant aux patients de consulter des m�decins sans avoir � voyager. Cette technologie est particuli�rement transformatrice dans les r�gions �loign�es.\n\nLa pr�vention des maladies infectieuses reste une priorit� majeure. Les campagnes de vaccination et les efforts d'�ducation en sant� publique ont contribu� � la r�duction de l'incidence de nombreuses maladies �vitables.\n\nL'augmentation des investissements dans la recherche m�dicale en Afrique a conduit au d�veloppement de solutions de sant� adapt�es au contexte africain.\n\nLa sant� mentale gagne en reconnaissance en tant que composante importante du bien-�tre g�n�ral. Les initiatives visant � r�duire la stigmatisation et � am�liorer l'acc�s aux services de sant� mentale sont en expansion.\n\nLa formation de professionnels de sant� qualifi�s reste un d�fi crucial. Les pays africains investissent dans l'�ducation m�dicale pour cr�er une main-d'�uvre de sant� comp�tente et d�vou�e.\n\nMalgr� les progr�s, le financement insuffisant et la distribution in�gale des ressources m�dicales demeurent des obstacles importants � surmonter pour am�liorer la sant� g�n�rale du continent.",
+    "author": 1,
+    "cover_image": "",
+    "created_at": "2026-01-21T13:26:10.327Z",
+    "updated_at": "2026-01-21T13:26:10.327Z"
+  }
+},
+{
+  "model": "blog.article",
+  "pk": 15,
+  "fields": {
+    "title": "Les Meilleurs Moments de la CAN 2023 : Moments d'�motions et de plaisir",
+    "content": "La Coupe d'Afrique des Nations 2023 a �t� l'un des plus grands �v�nements sportifs du continent africain. Les �quipes se sont affront�es avec passion et d�termination pour remporter le troph�e convoit�.Les matchs ont offert des moments d'intense �motion, avec des buts spectaculaires, des arr�ts impressionnants et des c�l�brations m�morables. Les supporters, venus en masse, ont cr�� une atmosph�re �lectrisante dans les stades.Le tournoi a mis en �vidence le talent brut des jeunes joueurs africains qui r�vent de briller sur la sc�ne mondiale. Chaque �quipe a apport� son style unique et sa culture footballistique.Le stade r�sonnait des chants et des hymnes nationaux, refl�tant la fiert� de chaque nation. Les �changes de balles �taient techniques, les tactiques �tait sophistiqu�es, et l'engagement physique �tait impressionnant.Cette CAN restera grav�e dans les m�moires comme une c�l�bration du football africain, o� le talent, la passion et l'amour du jeu ont triomph�. Les jeunes g�n�rations se rappelleront de ces exploits et seront inspir�es � poursuivre leurs r�ves footballistiques.",
+    "author": 1,
+    "cover_image": "",
+    "created_at": "2026-01-21T13:36:17.229Z",
+    "updated_at": "2026-01-22T22:45:21.346Z"
+  }
+},
+{
+  "model": "blog.article",
+  "pk": 16,
+  "fields": {
+    "title": "Le Football Africain en Pleine Ascension : Tendances et Avenir",
+    "content": "Le football africain conna�t une transformation remarquable ces derni�res ann�es. Les clubs se structurent mieux, les joueurs b�n�ficient d'une meilleure formation, et les comp�titions sont de plus en plus comp�titives.\n\nLes infrastructures se modernisent, les acad�mies de football se multiplient, et les investissements �trangers augmentent. Les jeunes talents africains sont maintenant recrut�s par les plus grands clubs europ�ens.\n\nLa formation tactique s'am�liore, la nutrition et l'entra�nement physique deviennent prioritaires. Les clubs africains adoptent les m�thodes modernes utilis�es en Europe et en Am�rique du Sud.\n\nLes m�dias contribuent � la popularit� du football en retransmettant les matchs en direct et en cr�ant du contenu engageant. Les r�seaux sociaux permettent aux supporters de rester connect�s m�me � distance.\n\nL'avenir du football africain est prometteur. Les nouvelles g�n�rations de joueurs sont talentueuses, ambitieuses et bien pr�par�es. Le continent a toutes les capacit�s pour devenir une puissance mondiale du football.",
+    "author": 1,
+    "cover_image": "",
+    "created_at": "2026-01-21T13:36:17.242Z",
+    "updated_at": "2026-01-21T13:36:17.242Z"
+  }
+},
+{
+  "model": "blog.article",
+  "pk": 17,
+  "fields": {
+    "title": "Messi en Inter Miami : Une Nouvelle �re du Football Am�ricain",
+    "content": "L'arriv�e de Lionel Messi � l'Inter Miami a marqu� un tournant majeur pour la Major League Soccer. La l�gende argentine a captiv� le public am�ricain avec son style de jeu inimitable.\n\nDepuis son arriv�e, Messi a transform� l'�quipe, amenant une exp�rience mondiale et une comp�tence technique exceptionnelle. Chaque match devient un �v�nement, les stades se remplissent et l'int�r�t pour la MLS explose.\n\nSon influence d�passe le terrain. Il inspire les jeunes joueurs, attire les investissements et �l�ve le niveau global de la comp�tition. Les autres �quipes recrutent �galement des stars pour rivaliser.\n\nLes statistiques parlent d'elles-m�mes : plus de passes d�cisives, plus de buts, une meilleure efficacit� offensive. Messi continue � repousser les limites malgr� son �ge avanc�.\n\nCette p�riode sera consid�r�e comme un point d'inflexion pour le football am�ricain. L'h�ritage de Messi en MLS sera durable, et son impact sur la popularit� du sport est inestimable.",
+    "author": 1,
+    "cover_image": "",
+    "created_at": "2026-01-21T13:36:17.257Z",
+    "updated_at": "2026-01-21T13:36:17.257Z"
+  }
+},
+{
+  "model": "blog.article",
+  "pk": 18,
+  "fields": {
+    "title": "La Musculation : Guide Complet pour D�buter",
+    "content": "La musculation est bien plus qu'une simple activit� physique, c'est un mode de vie qui transforme le corps et l'esprit. Commencer un programme de musculation peut sembler intimidant, mais c'est absolument r�alisable.\n\nAvant tout, �tablissez vos objectifs clairs. Voulez-vous gagner de la masse musculaire, perdre du poids, am�liorer votre force ou simplement vous sentir mieux? Vos objectifs guideront votre programme d'entra�nement.\n\nLa nutrition est fondamentale. Consommez suffisamment de prot�ines pour supporter la croissance musculaire, des glucides pour l'�nergie, et des graisses saines pour l'�quilibre hormonal. Hydratez-vous r�guli�rement.\n\nCommencez avec des poids l�gers pour ma�triser la technique. Une bonne forme est cruciale pour �viter les blessures et maximiser les r�sultats. Ne cherchez pas � soulever trop lourd trop vite.\n\nLa r�cup�ration est aussi importante que l'entra�nement. Dormez suffisamment, laissez les muscles se reposer entre les s�ances, et �coutez votre corps. La consistance sur le long terme est la cl� du succ�s.",
+    "author": 1,
+    "cover_image": "",
+    "created_at": "2026-01-21T13:36:17.276Z",
+    "updated_at": "2026-01-21T13:36:17.276Z"
+  }
+},
+{
+  "model": "blog.article",
+  "pk": 19,
+  "fields": {
+    "title": "Les Exercices les Plus Efficaces pour Prendre du Muscle",
+    "content": "Certains exercices sont simplement plus efficaces que d'autres pour construire de la masse musculaire. Ces mouvements compos�s recruter plusieurs groupes musculaires et activent plus de fibres.\n\nLe squat est l'un des meilleurs exercices pour les jambes et le corps entier. Il renforce le noyau, am�liore l'�quilibre et augmente les niveaux d'hormones anaboliques. Une r�p�tition correcte est essentielle.\n\nLe soulev� de terre d�veloppe le dos, les jambes et les �paules. C'est un mouvement puissant qui augmente la force globale. Ne n�gligez jamais cet exercice fondamental.\n\nLe d�velopp� couch� construit la poitrine, les �paules et les triceps. C'est le roi des exercices de poitrine. Variez les angles pour d�velopper tous les muscles pectoraux.\n\nLes tractions renforcent le dos et les biceps de mani�re exceptionnelle. Si vous ne pouvez pas faire de tractions compl�tes, utilisez une machine ou une bande d'assistance. L'engagement du dos est critique.\n\nLa coh�rence dans ces exercices, combin�e � une nutrition optimale et un repos suffisant, produira des r�sultats remarquables.",
+    "author": 1,
+    "cover_image": "",
+    "created_at": "2026-01-21T13:36:17.294Z",
+    "updated_at": "2026-01-21T13:36:17.294Z"
+  }
+},
+{
+  "model": "blog.article",
+  "pk": 20,
+  "fields": {
+    "title": "La Cuisine Africaine : Saveurs Authentiques du Continent",
+    "content": "La cuisine africaine est une explosion de saveurs, de couleurs et de traditions. Chaque r�gion du continent offre ses propres sp�cialit�s culinaires uniques et d�licieuses.\n\nLa cuisine ouest-africaine est connue pour ses rago�ts riches, ses sauces �pic�es et ses utilisation cr�atives de cacahu�tes et d'arachides. L'atti�k�, le fufu et le jollof riz sont des plats populaires et d�licieux.\n\nLa cuisine nord-africaine incorpore des influences m�diterran�ennes avec des �pices aromatiques. Le couscous, le tagine et la pastilla sont des d�lices savoureux qui racontent des histoires de commerce et de culture.\n\nLa cuisine australe met en avant les viandes grill�es, les fruits tropicaux et les l�gumes frais. Les recettes sont simples mais exquises, respectant les ingr�dients de base sans surcharge.\n\nL'est-africain offre des plats avec influences indiennes et arabes. L'ugali, les nyama choma et les chapati sont des aliments de base savoureux. Les �pices sont utilis�es avec g�n�rosit� et expertise.\n\nChaque plat africain raconte une histoire de famille, de communaut� et de tradition. La nourriture est un moyen de se connecter, de c�l�brer et de partager la vie.",
+    "author": 1,
+    "cover_image": "",
+    "created_at": "2026-01-21T13:36:17.313Z",
+    "updated_at": "2026-01-21T13:36:17.313Z"
+  }
+},
+{
+  "model": "blog.article",
+  "pk": 21,
+  "fields": {
+    "title": "Recettes Faciles de Cuisine Africaine pour Votre Famille",
+    "content": "Pr�parer de la nourriture africaine chez vous est plus facile que vous ne le pensez. Avec les bons ingr�dients et un peu de temps, vous pouvez cr�er des repas d�licieux.\n\nLe jollof riz est un classique incontournable. Du riz, de la sauce tomate, du bouillon de l�gumes et quelques �pices cr�ent un plat savoureux et satisfaisant. Chaque famille a sa propre recette secr�te.\n\nLe fufu est traditionnellement pr�par� en �crasant les bananes plantains ou les ignames. C'est un processus qui demande du travail, mais le r�sultat vaut la peine. Servez-le avec une sauce riche et des prot�ines.\n\nL'atti�k� est facile � pr�parer. C'est essentiellement de la semoule de manioc ferment�e, servie avec une sauce tomate et des prot�ines. C'est nutritif, d�licieux et se fait en minutes.\n\nLes pains plats africains comme le chapati ou le injera sont des accompagnements parfaits. Ils absorbent les sauces et les assaisonnements magnifiquement. Une fois que vous ma�trisez la technique, vous les pr�parez r�guli�rement.\n\nN'ayez pas peur d'exp�rimenter. La cuisine africaine encourage la cr�ativit� et l'adaptation selon ce que vous avez � disposition.",
+    "author": 1,
+    "cover_image": "",
+    "created_at": "2026-01-21T13:36:17.330Z",
+    "updated_at": "2026-01-21T13:36:17.331Z"
+  }
+},
+{
+  "model": "blog.article",
+  "pk": 22,
+  "fields": {
+    "title": "La Musique Africaine Moderne : Fusion Traditionnelle et Contemporaine",
+    "content": "La musique africaine moderne est une fusion dynamique de traditions anciennes et d'influences contemporaines. Les artistes africains cr�ent un son unique qui r�sonne mondialement.\n\nL'Afrobeat, popularis� par Fela Kuti et maintenant par Burna Boy et Wizkid, combine le juju, le jazz et le funk avec des rythmes africains. C'est une musique d'engagement social et de c�l�bration.\n\nLe gqom sud-africain offre des rythmes percutants et des �lectroniques modernes. C'est une musique de danse qui �mane des townships et s'est propag�e mondialement. Les producteurs cr�ent du son original et frais.\n\nL'amapiano, �galement d'Afrique du Sud, m�lange les touches de piano avec les beats House modernes. C'est m�lodieux, dansable et incroyablement populaire. Chaque morceau raconte une histoire musicale.\n\nLes artistes congolais continuent la tradition de la rumba avec des influences modernes. La guitare reste centrale, mais les productrices ajoutent des �l�ments �lectroniques sophistiqu�s.\n\nLa musique africaine contemporaine influence maintenant la musique mondiale. Des collaborations avec des artistes internationaux augmentent, et la reconnaissance grandit. Le continent est un pourvoyeur majeur de son mondial.",
+    "author": 1,
+    "cover_image": "",
+    "created_at": "2026-01-21T13:36:17.352Z",
+    "updated_at": "2026-01-21T13:36:17.352Z"
+  }
+},
+{
+  "model": "blog.article",
+  "pk": 23,
+  "fields": {
+    "title": "Les Plus Grands Artistes Africains Qui Dominent les Charts Mondiaux",
+    "content": "L'Afrique produit maintenant certains des plus grands artistes de la musique mondiale. Leur talent, leur cr�ativit� et leur d�vouement sont reconnus internationalement.\n\nWizkid a transform� le son afrobeat en une sensation mondiale. Avec des collaborations avec Drake et Beyonc�, il apporte la musique africaine aux podiums les plus prestigieux. Ses m�lodies sont contagieuses et intemporelles.\n\nBurna Boy combine la profondeur lyrique avec des productions innovantes. Il parle de probl�mes sociaux tout en cr�ant de la musique dansable. Son impact sur la g�n�ration actuelle est profond.\n\nRihanna a collabor� avec le producteur Afrobeats pour plusieurs succ�s. Beyonc� incorpore des �l�ments africains dans sa musique. Ces collaborations �l�vent le profil des artistes africains globalement.\n\nTiwa Savage reste une voix puissante pour les femmes dans la musique. Elle combine le talent du chant avec la production de qualit�. Son influence s'�tend bien au-del� de l'Afrique.\n\nCes artistes ouvrent les portes pour les g�n�rations futures. Ils montrent que la musique africaine n'a pas besoin de s'assimiler pour r�ussir globalement. L'authenticit� r�sonne partout.",
+    "author": 1,
+    "cover_image": "",
+    "created_at": "2026-01-21T13:36:17.377Z",
+    "updated_at": "2026-01-21T13:36:17.377Z"
+  }
+},
+{
+  "model": "blog.article",
+  "pk": 24,
+  "fields": {
+    "title": "Festival de Musique Afropays : Une C�l�bration Continentale",
+    "content": "Les festivals de musique africains sont des �v�nements de grande envergure qui c�l�brent la riche diversit� musicale du continent. Ces rassemblements cr�ent des souvenirs inoubliables.\n\nAfropays rassemble des artistes de partout en Afrique et du monde entier. Les trois jours de festival offrent de la musique continue, de la danse, de la nourriture et de la camaraderie. C'est une c�l�bration totale de la culture.\n\nLes jeunes et les moins jeunes se m�langent, dansent ensemble et cr�ent une atmosph�re inclusive. Les barri�res linguistiques disparaissent quand la musique joue. Tout le monde se comprend.\n\nLes artistes locaux c�toient les stars internationales. C'est une plateforme pour les talents �mergents de montrer leurs comp�tences. Beaucoup ont �t� d�couverts au cours de ces festivals.\n\nLa nourriture des diff�rentes r�gions est pr�sente, cr�ant une exp�rience culinaire aussi riche que musicale. Les stands d'artisanat offrent des produits locaux. C'est bien plus qu'un concert.\n\nCes festivals renforcent l'unit� continentale. Ils montrent le pouvoir de la musique � unir les gens ind�pendamment de leurs origines ou de leurs diff�rences.",
+    "author": 1,
+    "cover_image": "",
+    "created_at": "2026-01-21T13:36:17.399Z",
+    "updated_at": "2026-01-21T13:36:17.399Z"
+  }
+},
+{
+  "model": "blog.article",
+  "pk": 25,
+  "fields": {
+    "title": "Les �v�nements Sportifs Africains Qui Font la Fiert� du Continent",
+    "content": "L'Afrique accueille et organise des �v�nements sportifs majeurs qui inspirent millions de personnes. Ces �v�nements mettent le continent sur la carte mondiale du sport.\n\nLe Tournoi africain de volleyball attire les meilleures �quipes du continent. Les athl�tes montrent une comp�tence exceptionnelle et un engagement f�roce. Les supporters cr�ent une atmosph�re �lectrisante.\n\nLe Marathon annuel rassemble des coureurs de partout en Afrique et du monde. C'est une c�l�bration de l'endurance, de la pers�v�rance et de la vie. Les paysages magnifiques travers�s renforcent l'exp�rience.\n\nLes Jeux Africains, appel�s Afcon pour l'athl�tisme, font para�tre des athl�tes africains parmi les meilleurs du monde. Les records sont battus, les talents �mergent, et le continent brille.\n\nLe rugby africain gagne en popularit�, avec l'Afrique du Sud et d'autres nations d�veloppant des �quipes de classe mondiale. Les matchs sont intens�ment comp�titifs et techniquement brillants.\n\nCes �v�nements ne sont pas seulement du sport. Ils sont une source de fiert� nationale, une plateforme pour l'excellence, et une inspiration pour les jeunes g�n�rations de poursuivre leurs r�ves.",
+    "author": 1,
+    "cover_image": "",
+    "created_at": "2026-01-21T13:36:17.414Z",
+    "updated_at": "2026-01-21T13:36:17.414Z"
+  }
+},
+{
+  "model": "blog.like",
+  "pk": 99,
+  "fields": {
+    "article": 21,
+    "user": 5,
+    "ip_address": null,
+    "created_at": "2026-01-22T12:55:30.083Z"
+  }
+},
+{
+  "model": "blog.like",
+  "pk": 103,
+  "fields": {
+    "article": 22,
+    "user": 5,
+    "ip_address": null,
+    "created_at": "2026-01-22T13:03:21.054Z"
+  }
+},
+{
+  "model": "blog.like",
+  "pk": 106,
+  "fields": {
+    "article": 25,
+    "user": 5,
+    "ip_address": null,
+    "created_at": "2026-01-22T13:03:38.834Z"
+  }
+},
+{
+  "model": "blog.like",
+  "pk": 112,
+  "fields": {
+    "article": 15,
+    "user": 5,
+    "ip_address": null,
+    "created_at": "2026-01-22T22:45:02.043Z"
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 1,
+  "fields": {
+    "article": 3,
+    "author": 2,
+    "body": "Excellent article! Tr�s utile pour les d�butants.",
+    "created_at": "2026-01-21T12:58:02.248Z",
+    "updated_at": "2026-01-21T12:58:02.248Z",
+    "parent": null
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 2,
+  "fields": {
+    "article": 3,
+    "author": 3,
+    "body": "Je suis d'accord! Django c'est super!",
+    "created_at": "2026-01-21T12:58:02.260Z",
+    "updated_at": "2026-01-21T12:58:02.260Z",
+    "parent": 1
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 3,
+  "fields": {
+    "article": 2,
+    "author": 4,
+    "body": "Tr�s instructif comme toujours!",
+    "created_at": "2026-01-21T12:58:02.271Z",
+    "updated_at": "2026-01-21T12:58:02.271Z",
+    "parent": null
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 4,
+  "fields": {
+    "article": 2,
+    "author": 5,
+    "body": "salut",
+    "created_at": "2026-01-21T13:21:13.767Z",
+    "updated_at": "2026-01-21T13:21:13.767Z",
+    "parent": null
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 5,
+  "fields": {
+    "article": 25,
+    "author": 5,
+    "body": "interessant",
+    "created_at": "2026-01-21T13:40:03.879Z",
+    "updated_at": "2026-01-21T13:40:03.879Z",
+    "parent": null
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 6,
+  "fields": {
+    "article": 24,
+    "author": 5,
+    "body": "pas mal",
+    "created_at": "2026-01-22T08:05:01.827Z",
+    "updated_at": "2026-01-22T08:05:01.827Z",
+    "parent": null
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 7,
+  "fields": {
+    "article": 25,
+    "author": 5,
+    "body": "magnifique",
+    "created_at": "2026-01-22T12:16:08.452Z",
+    "updated_at": "2026-01-22T12:16:08.452Z",
+    "parent": null
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 8,
+  "fields": {
+    "article": 23,
+    "author": 5,
+    "body": "pas mal",
+    "created_at": "2026-01-22T13:09:58.356Z",
+    "updated_at": "2026-01-22T13:09:58.356Z",
+    "parent": null
+  }
+}
+]

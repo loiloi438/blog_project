@@ -1,0 +1,382 @@
+{% extends 'blog/base.html' %}
+{% load humanize template_tags %}
+
+{% block title %}Accueil - Blog Interactif{% endblock %}
+
+{% block extra_css %}
+<style>
+    .hero-section {
+        background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+        color: white;
+        padding: 4rem 0;
+        border-radius: 16px;
+        margin-bottom: 3rem;
+        box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 400px;
+        height: 400px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+    }
+    
+    .hero-content {
+        position: relative;
+        z-index: 1;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+        font-weight: 900;
+        margin-bottom: 1rem;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        opacity: 0.95;
+        text-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .search-hero {
+        margin-top: 2rem;
+    }
+    
+    .search-hero input {
+        padding: 1rem;
+        border-radius: 12px;
+        border: none;
+        font-size: 1rem;
+    }
+    
+    .search-hero button {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        border-radius: 12px;
+        background: white;
+        color: #6366f1;
+        border: none;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .search-hero button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    .stats-box {
+        text-align: center;
+        padding: 2rem;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, #6366f1, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    .stat-label {
+        color: #94a3b8;
+        font-weight: 600;
+        margin-top: 0.5rem;
+    }
+    
+    .article-preview {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    
+    .article-image-wrapper {
+        position: relative;
+        width: 100%;
+        height: 280px;
+        overflow: hidden;
+        border-radius: 14px 14px 0 0;
+        background: linear-gradient(135deg, #6366f1, #ec4899);
+    }
+    
+    .article-image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+    
+    .article-card:hover .article-image-wrapper img {
+        transform: scale(1.08);
+    }
+    
+    .article-badge {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #6366f1;
+        backdrop-filter: blur(10px);
+    }
+    
+    .article-footer {
+        padding: 1.5rem;
+        border-top: 1px solid #e2e8f0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .article-stats {
+        display: flex;
+        gap: 1.5rem;
+        font-size: 0.9rem;
+        color: #64748b;
+        align-items: center;
+    }
+    
+    .article-stat {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 600;
+    }
+    
+    .read-more-btn {
+        background: linear-gradient(135deg, #6366f1, #6366f1);
+        color: white;
+        border: none;
+        padding: 0.625rem 1.5rem;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+    
+    .read-more-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+        color: white;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-lg">
+    <!-- Hero Section -->
+    <section class="site-hero hero-section fade-in">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="hero-content">
+                    <h1 class="hero-title">Bienvenue! 👋</h1>
+                    <p class="hero-subtitle">Découvrez les meilleures histoires, partagez vos idées et connectez-vous avec une communauté passionnée.</p>
+                    <p style="font-size: 1rem; opacity: 0.9;">Explorez des articles captivants, aimez vos favorites et participez à la conversation.</p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="search-hero">
+                    <form action="{% url 'search' %}" method="get">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="q" placeholder="Cherchez un article..." style="border: none; padding: 1rem;">
+                            <button class="btn" type="submit">🔍 Rechercher</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights / Featured Section -->
+    <section class="home-highlights mb-4 fade-in">
+        <div class="row g-3 align-items-stretch">
+            <div class="col-md-4">
+                <div class="card h-100 text-center p-3">
+                    <div class="card-body">
+                        <i class="fas fa-bolt fa-2x text-gradient mb-2"></i>
+                        <h5 class="card-title">À la une</h5>
+                        <p class="card-text text-muted small">Les articles les plus récents et choisis par la communauté.</p>
+                        <a href="{% url 'article_list' %}" class="btn btn-outline-primary mt-2">Voir les articles</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 text-center p-3">
+                    <div class="card-body">
+                        <i class="fas fa-fire fa-2x text-gradient mb-2"></i>
+                        <h5 class="card-title">Populaires</h5>
+                        <p class="card-text text-muted small">Les plus aimés par nos lecteurs.</p>
+                        <a href="{% url 'article_list' %}?sort=popular" class="btn btn-outline-primary mt-2">Voir les populaires</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 text-center p-3">
+                    <div class="card-body">
+                        <i class="fas fa-compass fa-2x text-gradient mb-2"></i>
+                        <h5 class="card-title">Explorer</h5>
+                        <p class="card-text text-muted small">Parcourez par thèmes et trouvez votre prochaine lecture.</p>
+                        <a href="{% url 'article_list' %}" class="btn btn-outline-primary mt-2">Explorer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% if articles %}
+    <div class="row g-4 mb-5">
+        <!-- Articles Column -->
+        <div class="col-lg-8">
+            <div class="article-grid">
+            {% for article in articles %}
+                <div class="card article-card article-preview">
+                    <div class="article-image-wrapper">
+                            {% if article.cover_image %}
+                                {% with imgurl=article.cover_image.url %}
+                                <img class="lazy-img" data-src="{{ imgurl }}" src="{{ imgurl }}" alt="{{ article.title }}" onerror="this.onerror=null;this.src='https://picsum.photos/seed/{{ article.pk }}/1200/700'">
+                                {% endwith %}
+                            {% else %}
+                                {% article_image article 'large' as imgurl %}
+                                <img class="lazy-img" data-src="{{ imgurl }}" src="{{ imgurl }}" alt="{{ article.title }}" onerror="this.onerror=null;this.src='https://picsum.photos/seed/{{ article.pk }}/1200/700'">
+                            {% endif %}
+                        <span class="article-badge">Nouveau</span>
+                    </div>
+                    <div class="article-card-body">
+                        <div class="article-header">
+                            <h3 class="article-title">
+                                <a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a>
+                            </h3>
+                        </div>
+                        <div class="article-meta">
+                            <span class="article-meta-item">
+                                <i class="fas fa-user-circle"></i> {{ article.author.username }}
+                            </span>
+                            <span class="article-meta-item">
+                                <i class="fas fa-calendar-alt"></i> {{ article.created_at|date:"d M Y" }}
+                            </span>
+                        </div>
+                        <p class="article-content-preview">{{ article.content|truncatewords:30 }}</p>
+                    </div>
+                    <div class="article-footer">
+                        <div class="article-stats">
+                            <span class="article-stat">
+                                <i class="fas fa-heart"></i>
+                                <strong class="likes-count">{{ article.likes.count }}</strong>
+                            </span>
+                            <span class="article-stat">
+                                <i class="fas fa-comments"></i>
+                                <strong>{{ article.comments.count }}</strong>
+                            </span>
+                        </div>
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            <a href="{% url 'article_detail' article.pk %}" class="read-more-btn">Lire plus</a>
+                            {% if user.is_authenticated and article.author == user or user.is_staff %}
+                            <div class="article-actions">
+                                <a href="{% url 'article_edit' article.pk %}" class="btn btn-sm btn-outline-primary" title="Modifier">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="{% url 'article_delete' article.pk %}" class="btn btn-sm btn-outline-danger" title="Supprimer">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <!-- Statistics -->
+            <div class="row g-3 mb-4">
+                <div class="col-12">
+                    <div class="stats-box">
+                        <div class="stat-number">{{ total_articles }}</div>
+                        <div class="stat-label">Articles publiés</div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="stats-box">
+                        <div class="stat-number">{{ total_users|intcomma }}</div>
+                        <div class="stat-label">Contributeurs</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            {% if user.is_authenticated %}
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title mb-3">
+                        <i class="fas fa-pen-fancy"></i> Partager une idée
+                    </h5>
+                    <p class="text-muted small mb-3">Vous avez quelque chose à dire? Créez un nouvel article et rejoignez notre communauté!</p>
+                    <a href="{% url 'article_create' %}" class="btn btn-primary w-100">
+                        <i class="fas fa-plus-circle"></i> Nouvel article
+                    </a>
+                </div>
+            </div>
+            {% else %}
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title mb-3">
+                        <i class="fas fa-user-check"></i> Rejoignez-nous!
+                    </h5>
+                    <p class="text-muted small mb-3">Inscrivez-vous pour publier vos propres articles et participer à la communauté.</p>
+                    <a href="{% url 'register' %}" class="btn btn-primary w-100 mb-2">
+                        <i class="fas fa-user-plus"></i> S'inscrire
+                    </a>
+                    <a href="{% url 'login' %}" class="btn btn-outline-primary w-100">
+                        <i class="fas fa-sign-in-alt"></i> Se connecter
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% else %}
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card">
+                <div class="card-body no-articles">
+                    <i class="fas fa-inbox" style="font-size: 4rem; color: #cbd5e1; margin-bottom: 1rem; display: block;"></i>
+                    <h2>Aucun article trouvé</h2>
+                    <p class="text-muted">Soyez le premier à partager vos idées!</p>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'article_create' %}" class="btn btn-primary mt-3">
+                        <i class="fas fa-plus-circle"></i> Créer le premier article
+                    </a>
+                    {% else %}
+                    <a href="{% url 'register' %}" class="btn btn-primary mt-3">
+                        <i class="fas fa-user-plus"></i> S'inscrire pour commencer
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

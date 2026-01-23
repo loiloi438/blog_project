@@ -1,0 +1,1964 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles - Blog Interactif</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            --success: #10b981;
+            --light-bg: #f8fafc;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        * {
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+        
+        html, body {
+            height: 100%;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #334155;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* ========== NAVBAR ========== */
+        .navbar {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+            box-shadow: var(--card-shadow);
+            border-bottom: 3px solid var(--secondary);
+            backdrop-filter: blur(10px);
+        }
+        
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.6rem;
+            color: white !important;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .navbar-brand span {
+            background: linear-gradient(135deg, #fbbf24, #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-link {
+            color: white !important;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 0.5rem 1rem !important;
+            margin: 0 0.25rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .nav-link:hover::after {
+            width: 80%;
+        }
+        
+        .navbar-toggler {
+            border: none;
+            color: white;
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: none;
+            outline: 2px solid var(--secondary);
+        }
+        
+        .dropdown-menu {
+            background: white;
+            border: none;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border-top: 3px solid var(--primary);
+        }
+        
+        .dropdown-item {
+            color: #334155;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            margin: 4px 8px;
+        }
+        
+        .dropdown-item:hover {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            transform: translateX(4px);
+        }
+        
+        /* ========== CARDS ========== */
+        .card {
+            border: none;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            overflow: hidden;
+            background: white;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-shadow-hover);
+        }
+        
+        .article-card {
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .article-card-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        }
+        
+        .article-card-body {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .article-header {
+            margin-bottom: 1rem;
+        }
+        
+        .article-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: transform 0.3s ease;
+        }
+        
+        .article-title:hover {
+            transform: scale(1.02);
+        }
+        
+        .article-title a {
+            text-decoration: none;
+        }
+        
+        .article-meta {
+            font-size: 0.875rem;
+            color: #94a3b8;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .article-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .article-content-preview {
+            color: #475569;
+            line-height: 1.6;
+            margin: 1rem 0;
+            flex-grow: 1;
+        }
+        
+        .article-actions {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: flex-end;
+        }
+        
+        /* ========== BUTTONS ========== */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border: none;
+            font-weight: 600;
+            padding: 0.625rem 1.25rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+            color: white;
+        }
+        
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline-danger {
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-danger:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* ========== LIKES ========== */
+        .like-btn {
+            background: linear-gradient(135deg, #fff5e6, #ffe5cc);
+            border: 2px solid #fbbf24;
+            color: #f59e0b;
+            cursor: pointer;
+            padding: 8px 14px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 50px;
+            height: 50px;
+            font-weight: 600;
+        }
+        
+        .like-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 8px 15px rgba(245, 158, 11, 0.3);
+        }
+        
+        .like-btn.liked {
+            color: white;
+            background: linear-gradient(135deg, var(--secondary), #f43f5e);
+            border-color: var(--secondary);
+            animation: pulse 0.6s ease;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.15);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .likes-count {
+            font-weight: 700;
+            color: #334155;
+            font-size: 1rem;
+        }
+        
+        /* ========== COMMENTS ========== */
+        .comment-section {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e2e8f0;
+        }
+        
+        .comment-section h3 {
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+        }
+        
+        .comment {
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .comment:hover {
+            box-shadow: var(--card-shadow);
+            transform: translateX(4px);
+        }
+        
+        .comment.reply {
+            margin-left: 2rem;
+            border-left-color: var(--secondary);
+            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+        }
+        
+        .comment-author {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.05rem;
+        }
+        
+        .comment-date {
+            font-size: 0.875rem;
+            color: #94a3b8;
+        }
+        
+        .comment-body {
+            margin: 0.75rem 0;
+            color: #334155;
+            line-height: 1.6;
+        }
+        
+        /* ========== FORMS ========== */
+        .form-control,
+        .form-select {
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+        
+        .form-container {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        /* ========== ALERTS ========== */
+        .alert {
+            border: none;
+            border-radius: 12px;
+            border-left: 4px solid;
+            padding: 1rem 1.5rem;
+            font-weight: 500;
+        }
+        
+        .alert-info {
+            background: linear-gradient(135deg, #dbeafe, #e0f2fe);
+            color: #0369a1;
+            border-left-color: #0284c7;
+        }
+        
+        .alert-success {
+            background: linear-gradient(135deg, #dcfce7, #d1fae5);
+            color: #166534;
+            border-left-color: #16a34a;
+        }
+        
+        .alert-warning {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            color: #92400e;
+            border-left-color: #eab308;
+        }
+        
+        .alert-danger {
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+            color: #991b1b;
+            border-left-color: #dc2626;
+        }
+        
+        /* ========== FOOTER ========== */
+        .footer {
+            margin-top: auto;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            color: white;
+            text-align: center;
+            border-top: 3px solid var(--primary);
+        }
+        
+        .footer p {
+            margin: 0;
+            font-weight: 500;
+        }
+        
+        /* ========== UTILITIES ========== */
+        .badge {
+            border-radius: 8px;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+        }
+        
+        .badge-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+        
+        .badge-secondary {
+            background: linear-gradient(135deg, var(--secondary), #f43f5e);
+            color: white;
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+        
+        .no-articles {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #94a3b8;
+        }
+        
+        .no-articles h2 {
+            font-weight: 800;
+            color: #334155;
+            margin-bottom: 1rem;
+        }
+        
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1.3rem;
+            }
+            
+            .article-card-body {
+                padding: 1.5rem;
+            }
+            
+            .comment.reply {
+                margin-left: 1rem;
+            }
+            
+            .article-actions {
+                justify-content: flex-start;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .form-container {
+                padding: 1.5rem;
+            }
+            
+            .article-meta {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="/static/css/design.css">
+    
+<style>
+    .gallery-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    
+    .gallery-title {
+        font-size: 2.5rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, #6366f1, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 0.5rem;
+    }
+    
+    .gallery-subtitle {
+        color: #94a3b8;
+        font-size: 1.1rem;
+    }
+    
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        animation: fadeIn 0.6s ease;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .gallery-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+    
+    .gallery-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .gallery-image {
+        position: relative;
+        width: 100%;
+        height: 240px;
+        overflow: hidden;
+        background: linear-gradient(135deg, #6366f1, #ec4899);
+    }
+    
+    .gallery-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+    
+    .gallery-card:hover .gallery-image img {
+        transform: scale(1.1);
+    }
+    
+    .gallery-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(99, 102, 241, 0.3);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .gallery-card:hover .gallery-overlay {
+        opacity: 1;
+    }
+    
+    .gallery-content {
+        padding: 1.75rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .gallery-card-title {
+        font-size: 1.25rem;
+        font-weight: 800;
+        margin-bottom: 0.75rem;
+        color: #1e293b;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    
+    .gallery-card-meta {
+        font-size: 0.85rem;
+        color: #94a3b8;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .gallery-card-excerpt {
+        color: #475569;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        flex-grow: 1;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        font-size: 0.95rem;
+    }
+    
+    .gallery-card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 1rem;
+        border-top: 1px solid #e2e8f0;
+        gap: 1rem;
+    }
+    
+    .gallery-stats {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.85rem;
+        color: #64748b;
+    }
+    
+    .gallery-stat {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-weight: 600;
+    }
+    
+    .gallery-actions {
+        display: flex;
+        gap: 0.5rem;
+    }
+    
+    .gallery-btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.85rem;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+    }
+    
+    .gallery-read-btn {
+        background: linear-gradient(135deg, #6366f1, #6366f1);
+        color: white;
+        flex: 1;
+    }
+    
+    .gallery-read-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3);
+    }
+    
+    .filter-buttons {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .filter-btn {
+        padding: 0.75rem 1.5rem;
+        margin: 0.5rem;
+        border: 2px solid #e2e8f0;
+        background: white;
+        border-radius: 25px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: #334155;
+    }
+    
+    .filter-btn:hover,
+    .filter-btn.active {
+        background: linear-gradient(135deg, #6366f1, #ec4899);
+        color: white;
+        border-color: transparent;
+    }
+</style>
+
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-feather"></i>
+                <span>Blog</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">
+                            <i class="fas fa-home"></i> Accueil
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/articles/">
+                            <i class="fas fa-newspaper"></i> Articles
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login/">
+                            <i class="fas fa-sign-in-alt"></i> Connexion
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register/">
+                            <i class="fas fa-user-plus"></i> Inscription
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Messages -->
+    
+
+    <!-- Main Content -->
+    <div class="container-fluid flex-grow-1">
+        
+<div class="container-lg py-5">
+    <div class="gallery-header">
+        <h1 class="gallery-title">Galerie d'Articles</h1>
+        <p class="gallery-subtitle">Explorez tous nos articles et trouvez ce qui vous inspire</p>
+    </div>
+
+    
+    <div class="gallery-grid">
+        
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                
+                    
+                    <img class="lazy-img" data-src="https://picsum.photos/seed/25/1200/400" src="https://picsum.photos/seed/25/1200/400" alt="Les Événements Sportifs Africains Qui Font la Fierté du Continent" onerror="this.onerror=null;this.src='https://picsum.photos/seed/25/800/600'">
+                
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">Les Événements Sportifs Africains Qui Font la Fierté du Continent</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>admin</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        21 Jan 2026
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">L&#x27;Afrique accueille et organise des événements sportifs majeurs qui inspirent millions de personnes. Ces événements mettent le continent sur la carte mondiale du sport. Le …</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            1
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            1
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="/article/25/" class="gallery-btn gallery-read-btn">Lire</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                
+                    
+                    <img class="lazy-img" data-src="https://picsum.photos/seed/24/1200/400" src="https://picsum.photos/seed/24/1200/400" alt="Festival de Musique Afropays : Une Célébration Continentale" onerror="this.onerror=null;this.src='https://picsum.photos/seed/24/800/600'">
+                
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">Festival de Musique Afropays : Une Célébration Continentale</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>admin</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        21 Jan 2026
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">Les festivals de musique africains sont des événements de grande envergure qui célèbrent la riche diversité musicale du continent. Ces rassemblements créent des souvenirs inoubliables. …</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            0
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            1
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="/article/24/" class="gallery-btn gallery-read-btn">Lire</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                
+                    
+                    <img class="lazy-img" data-src="https://picsum.photos/seed/23/1200/400" src="https://picsum.photos/seed/23/1200/400" alt="Les Plus Grands Artistes Africains Qui Dominent les Charts Mondiaux" onerror="this.onerror=null;this.src='https://picsum.photos/seed/23/800/600'">
+                
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">Les Plus Grands Artistes Africains Qui Dominent les Charts Mondiaux</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>admin</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        21 Jan 2026
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">L&#x27;Afrique produit maintenant certains des plus grands artistes de la musique mondiale. Leur talent, leur créativité et leur dévouement sont reconnus internationalement. Wizkid a transformé …</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            0
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            0
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="/article/23/" class="gallery-btn gallery-read-btn">Lire</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                
+                    
+                    <img class="lazy-img" data-src="https://picsum.photos/seed/22/1200/400" src="https://picsum.photos/seed/22/1200/400" alt="La Musique Africaine Moderne : Fusion Traditionnelle et Contemporaine" onerror="this.onerror=null;this.src='https://picsum.photos/seed/22/800/600'">
+                
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">La Musique Africaine Moderne : Fusion Traditionnelle et Contemporaine</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>admin</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        21 Jan 2026
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">La musique africaine moderne est une fusion dynamique de traditions anciennes et d&#x27;influences contemporaines. Les artistes africains créent un son unique qui résonne mondialement. L&#x27;Afrobeat, …</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            0
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            0
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="/article/22/" class="gallery-btn gallery-read-btn">Lire</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                
+                    
+                    <img class="lazy-img" data-src="https://picsum.photos/seed/21/1200/400" src="https://picsum.photos/seed/21/1200/400" alt="Recettes Faciles de Cuisine Africaine pour Votre Famille" onerror="this.onerror=null;this.src='https://picsum.photos/seed/21/800/600'">
+                
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">Recettes Faciles de Cuisine Africaine pour Votre Famille</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>admin</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        21 Jan 2026
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">Préparer de la nourriture africaine chez vous est plus facile que vous ne le pensez. Avec les bons ingrédients et un peu de temps, vous …</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            0
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            0
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="/article/21/" class="gallery-btn gallery-read-btn">Lire</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                
+                    
+                    <img class="lazy-img" data-src="https://picsum.photos/seed/20/1200/400" src="https://picsum.photos/seed/20/1200/400" alt="La Cuisine Africaine : Saveurs Authentiques du Continent" onerror="this.onerror=null;this.src='https://picsum.photos/seed/20/800/600'">
+                
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">La Cuisine Africaine : Saveurs Authentiques du Continent</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>admin</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        21 Jan 2026
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">La cuisine africaine est une explosion de saveurs, de couleurs et de traditions. Chaque région du continent offre ses propres spécialités culinaires uniques et délicieuses. …</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            0
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            0
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="/article/20/" class="gallery-btn gallery-read-btn">Lire</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                
+                    
+                    <img class="lazy-img" data-src="https://picsum.photos/seed/19/1200/400" src="https://picsum.photos/seed/19/1200/400" alt="Les Exercices les Plus Efficaces pour Prendre du Muscle" onerror="this.onerror=null;this.src='https://picsum.photos/seed/19/800/600'">
+                
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">Les Exercices les Plus Efficaces pour Prendre du Muscle</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>admin</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        21 Jan 2026
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">Certains exercices sont simplement plus efficaces que d&#x27;autres pour construire de la masse musculaire. Ces mouvements composés recruter plusieurs groupes musculaires et activent plus de …</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            0
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            0
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="/article/19/" class="gallery-btn gallery-read-btn">Lire</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                
+                    
+                    <img class="lazy-img" data-src="https://picsum.photos/seed/18/1200/400" src="https://picsum.photos/seed/18/1200/400" alt="La Musculation : Guide Complet pour Débuter" onerror="this.onerror=null;this.src='https://picsum.photos/seed/18/800/600'">
+                
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">La Musculation : Guide Complet pour Débuter</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>admin</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        21 Jan 2026
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">La musculation est bien plus qu&#x27;une simple activité physique, c&#x27;est un mode de vie qui transforme le corps et l&#x27;esprit. Commencer un programme de musculation …</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            0
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            0
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="/article/18/" class="gallery-btn gallery-read-btn">Lire</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                
+                    
+                    <img class="lazy-img" data-src="https://picsum.photos/seed/17/1200/400" src="https://picsum.photos/seed/17/1200/400" alt="Messi en Inter Miami : Une Nouvelle Ère du Football Américain" onerror="this.onerror=null;this.src='https://picsum.photos/seed/17/800/600'">
+                
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">Messi en Inter Miami : Une Nouvelle Ère du Football Américain</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>admin</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        21 Jan 2026
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">L&#x27;arrivée de Lionel Messi à l&#x27;Inter Miami a marqué un tournant majeur pour la Major League Soccer. La légende argentine a captivé le public américain …</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            0
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            0
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="/article/17/" class="gallery-btn gallery-read-btn">Lire</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                
+                    
+                    <img class="lazy-img" data-src="https://picsum.photos/seed/16/1200/400" src="https://picsum.photos/seed/16/1200/400" alt="Le Football Africain en Pleine Ascension : Tendances et Avenir" onerror="this.onerror=null;this.src='https://picsum.photos/seed/16/800/600'">
+                
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">Le Football Africain en Pleine Ascension : Tendances et Avenir</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>admin</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        21 Jan 2026
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">Le football africain connaît une transformation remarquable ces dernières années. Les clubs se structurent mieux, les joueurs bénéficient d&#x27;une meilleure formation, et les compétitions sont …</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            0
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            0
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="/article/16/" class="gallery-btn gallery-read-btn">Lire</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                
+                    
+                    <img class="lazy-img" data-src="https://picsum.photos/seed/15/1200/400" src="https://picsum.photos/seed/15/1200/400" alt="Les Meilleurs Moments de la CAN 2023 : Moments d&#x27;Émotions" onerror="this.onerror=null;this.src='https://picsum.photos/seed/15/800/600'">
+                
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">Les Meilleurs Moments de la CAN 2023 : Moments d&#x27;Émotions</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>admin</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        21 Jan 2026
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">La Coupe d&#x27;Afrique des Nations 2023 a été l&#x27;un des plus grands événements sportifs du continent africain. Les équipes se sont affrontées avec passion et …</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            0
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            0
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="/article/15/" class="gallery-btn gallery-read-btn">Lire</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                
+                    
+                    <img class="lazy-img" data-src="https://picsum.photos/seed/14/1200/400" src="https://picsum.photos/seed/14/1200/400" alt="Santé et Bien-être: Progrès Africains dans le Secteur Médical" onerror="this.onerror=null;this.src='https://picsum.photos/seed/14/800/600'">
+                
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">Santé et Bien-être: Progrès Africains dans le Secteur Médical</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>admin</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        21 Jan 2026
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">Le secteur de la santé en Afrique a enregistré des progrès significatifs, bien que des défis persistants demeurent. L&#x27;accès aux services de santé de base …</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            0
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            0
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="/article/14/" class="gallery-btn gallery-read-btn">Lire</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                
+                    
+                    <img class="lazy-img" data-src="https://picsum.photos/seed/13/1200/400" src="https://picsum.photos/seed/13/1200/400" alt="Éducation en Afrique: Transformations et Défis" onerror="this.onerror=null;this.src='https://picsum.photos/seed/13/800/600'">
+                
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">Éducation en Afrique: Transformations et Défis</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>admin</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        21 Jan 2026
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">L&#x27;éducation en Afrique connaît une transformation profonde, avec des initiatives visant à améliorer l&#x27;accès, la qualité et l&#x27;équité de l&#x27;apprentissage. Malgré les progrès réalisés dans …</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            0
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            0
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="/article/13/" class="gallery-btn gallery-read-btn">Lire</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                
+                    
+                    <img class="lazy-img" data-src="https://picsum.photos/seed/12/1200/400" src="https://picsum.photos/seed/12/1200/400" alt="Environnement et Changement Climatique: Initiatives Africaines" onerror="this.onerror=null;this.src='https://picsum.photos/seed/12/800/600'">
+                
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">Environnement et Changement Climatique: Initiatives Africaines</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>admin</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        21 Jan 2026
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">L&#x27;Afrique, malgré sa contribution mineure au changement climatique mondial, est l&#x27;une des régions les plus affectées par ses impacts dévastateurs. Les sécheresses prolongées, les inondations …</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            0
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            0
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="/article/12/" class="gallery-btn gallery-read-btn">Lire</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                
+                    
+                    <img class="lazy-img" data-src="https://picsum.photos/seed/11/1200/400" src="https://picsum.photos/seed/11/1200/400" alt="Innovation Technologique en Afrique: Le Secteur Tech en Expansion" onerror="this.onerror=null;this.src='https://picsum.photos/seed/11/800/600'">
+                
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">Innovation Technologique en Afrique: Le Secteur Tech en Expansion</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>admin</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        21 Jan 2026
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">Le secteur technologique en Afrique connaît une croissance explosive, positionnant le continent comme un centre d&#x27;innovation mondiale émergent. Les startups africaines ont levé des capitaux …</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            0
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            0
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="/article/11/" class="gallery-btn gallery-read-btn">Lire</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                
+                    
+                    <img class="lazy-img" data-src="https://picsum.photos/seed/10/1200/400" src="https://picsum.photos/seed/10/1200/400" alt="Sports: Les Athlètes Africains Brillent au Niveau Mondial" onerror="this.onerror=null;this.src='https://picsum.photos/seed/10/800/600'">
+                
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">Sports: Les Athlètes Africains Brillent au Niveau Mondial</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>admin</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        21 Jan 2026
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">Les athlètes africains ont continué à se démarquer sur la scène sportive mondiale en 2024, démontrant leur excellence dans divers domaines sportifs. L&#x27;athlétisme africain, en …</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            0
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            0
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="/article/10/" class="gallery-btn gallery-read-btn">Lire</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                
+                    
+                    <img class="lazy-img" data-src="https://picsum.photos/seed/9/1200/400" src="https://picsum.photos/seed/9/1200/400" alt="Événements Culturels Majeurs d&#x27;Afrique en 2024" onerror="this.onerror=null;this.src='https://picsum.photos/seed/9/800/600'">
+                
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">Événements Culturels Majeurs d&#x27;Afrique en 2024</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>admin</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        21 Jan 2026
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">L&#x27;année 2024 a été marquée par de nombreux événements culturels majeurs qui ont mis en avant la richesse et la diversité du patrimoine africain. Les …</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            0
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            0
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="/article/9/" class="gallery-btn gallery-read-btn">Lire</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                
+                    
+                    <img class="lazy-img" data-src="https://picsum.photos/seed/8/1200/400" src="https://picsum.photos/seed/8/1200/400" alt="CAN 2024 Côte d&#x27;Ivoire: Moments Mémorables et Surprises" onerror="this.onerror=null;this.src='https://picsum.photos/seed/8/800/600'">
+                
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">CAN 2024 Côte d&#x27;Ivoire: Moments Mémorables et Surprises</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>admin</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        21 Jan 2026
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">La Coupe d&#x27;Afrique des Nations 2024 en Côte d&#x27;Ivoire a offert un tournoi riche en émotions, en surprises et en performances mémorables que les fans …</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            0
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            0
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="/article/8/" class="gallery-btn gallery-read-btn">Lire</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                
+                    
+                    <img class="lazy-img" data-src="https://picsum.photos/seed/7/1200/400" src="https://picsum.photos/seed/7/1200/400" alt="Cuisine Africaine: Saveurs et Traditions Culinaires" onerror="this.onerror=null;this.src='https://picsum.photos/seed/7/800/600'">
+                
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">Cuisine Africaine: Saveurs et Traditions Culinaires</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>admin</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        21 Jan 2026
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">La cuisine africaine est l&#x27;une des plus riches et variées au monde, offrant une tapestrie de saveurs, de textures et de techniques culinaires millénaires. Chaque …</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            0
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            0
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="/article/7/" class="gallery-btn gallery-read-btn">Lire</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                
+                    
+                    <img class="lazy-img" data-src="https://picsum.photos/seed/6/1200/400" src="https://picsum.photos/seed/6/1200/400" alt="Musique Africaine: L&#x27;Évolution du Grime et du Hip-Hop" onerror="this.onerror=null;this.src='https://picsum.photos/seed/6/800/600'">
+                
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">Musique Africaine: L&#x27;Évolution du Grime et du Hip-Hop</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>admin</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        21 Jan 2026
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">La musique africaine a connu une transformation remarquable au cours des deux dernières décennies, notamment avec l&#x27;émergence du grime et la popularité croissante du hip-hop …</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            0
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            0
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="/article/6/" class="gallery-btn gallery-read-btn">Lire</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                
+                    
+                    <img class="lazy-img" data-src="https://picsum.photos/seed/5/1200/400" src="https://picsum.photos/seed/5/1200/400" alt="Les Meilleurs Buteurs de la CAN 2024" onerror="this.onerror=null;this.src='https://picsum.photos/seed/5/800/600'">
+                
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">Les Meilleurs Buteurs de la CAN 2024</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>admin</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        21 Jan 2026
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">La Coupe d&#x27;Afrique des Nations 2024 en Côte d&#x27;Ivoire a offert des spectacles remarquables, avec plusieurs attaquants qui se sont distingués par leurs performances exceptionnelles. …</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            0
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            0
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="/article/5/" class="gallery-btn gallery-read-btn">Lire</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                
+                    
+                    <img class="lazy-img" data-src="https://picsum.photos/seed/4/1200/400" src="https://picsum.photos/seed/4/1200/400" alt="Football: L&#x27;Impact de la Technologie VAR sur le Jeu" onerror="this.onerror=null;this.src='https://picsum.photos/seed/4/800/600'">
+                
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">Football: L&#x27;Impact de la Technologie VAR sur le Jeu</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>admin</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        21 Jan 2026
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">La technologie VAR (Video Assistant Referee) a révolutionné le monde du football moderne. Introduite progressivement depuis 2016, elle a transformé la manière dont les arbitres …</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            0
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            0
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="/article/4/" class="gallery-btn gallery-read-btn">Lire</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                
+                    
+                    <img class="lazy-img" data-src="https://picsum.photos/seed/3/1200/400" src="https://picsum.photos/seed/3/1200/400" alt="Les meilleures pratiques en développement web" onerror="this.onerror=null;this.src='https://picsum.photos/seed/3/800/600'">
+                
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">Les meilleures pratiques en développement web</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>marie</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        21 Jan 2026
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">La sécurité, les performances et la maintenabilité sont les trois piliers d&#x27;une bonne application web. Dans cet article, nous discuterons de comment les atteindre dans …</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            0
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            2
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="/article/3/" class="gallery-btn gallery-read-btn">Lire</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                
+                    
+                    <img class="lazy-img" data-src="https://picsum.photos/seed/2/1200/400" src="https://picsum.photos/seed/2/1200/400" alt="Comment démarrer avec Django" onerror="this.onerror=null;this.src='https://picsum.photos/seed/2/800/600'">
+                
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">Comment démarrer avec Django</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>jean</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        21 Jan 2026
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">Django est un excellent framework Python pour développer des applications web. Voici quelques conseils pour bien démarrer: 1. Installez Django avec pip 2. Créez un …</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            0
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            2
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="/article/2/" class="gallery-btn gallery-read-btn">Lire</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                
+                    
+                    <img class="lazy-img" data-src="https://picsum.photos/seed/1/1200/400" src="https://picsum.photos/seed/1/1200/400" alt="Bienvenue sur mon blog!" onerror="this.onerror=null;this.src='https://picsum.photos/seed/1/800/600'">
+                
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">Bienvenue sur mon blog!</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>admin</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        21 Jan 2026
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">Ceci est mon premier article. Je suis ravi de partager mes pensées et mes expériences avec vous! N&#x27;hésitez pas à commenter et à participer à …</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            0
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            0
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="/article/1/" class="gallery-btn gallery-read-btn">Lire</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-md-4">
+                    <h5 class="text-gradient">Blog Interactif</h5>
+                    <p class="text-muted">Partagez vos idées, découvrez des histoires inspirantes et rejoignez une communauté engagée.</p>
+                    <div class="mt-3">
+                        <a href="#" class="btn btn-outline-light btn-sm me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-sm me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-sm"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="text-white">Liens rapides</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="/" class="text-white text-decoration-none">Accueil</a></li>
+                        <li><a href="/articles/" class="text-white text-decoration-none">Articles</a></li>
+                        <li><a href="/register/" class="text-white text-decoration-none">S'inscrire</a></li>
+                        <li><a href="/login/" class="text-white text-decoration-none">Connexion</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-5">
+                    <h6 class="text-white">Newsletter</h6>
+                    <p class="text-muted small">Recevez les meilleurs articles directement par e‑mail.</p>
+                    <form action="#" method="post" class="d-flex">
+                        <input type="hidden" name="csrfmiddlewaretoken" value="OK5a2rezJWpZgNctBTO2tcx6CqMzL2zIO7oKLnBwMSk43E1XBakNeis955WTCQXe">
+                        <input type="email" name="email" class="form-control me-2" placeholder="Votre email" required>
+                        <button class="btn btn-primary">S'abonner</button>
+                    </form>
+                </div>
+            </div>
+            <hr class="mt-4" style="border-color: rgba(255,255,255,0.08);">
+            <div class="d-flex justify-content-between align-items-center pt-3">
+                <small class="text-muted">&copy; 2026 Blog Interactif</small>
+                <small class="text-muted">Made with ❤️</small>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/design.js"></script>
+        <script>
+        // Inline fallback initializer: ensure lazy images and like buttons work
+        (function(){
+            try{
+                if(window.__design_initialized) return; window.__design_initialized = true;
+                function getCookie(name){
+                    var cookieValue = null; if(document.cookie && document.cookie!==''){
+                        var cookies = document.cookie.split(';'); for(var i=0;i<cookies.length;i++){var c=cookies[i].trim(); if(c.substring(0,name.length+1)===(name+'=')){cookieValue=decodeURIComponent(c.substring(name.length+1));break;}}
+                    }
+                    return cookieValue;
+                }
+                function initLazy(){
+                    var imgs = document.querySelectorAll('img.lazy-img');
+                    if(!('IntersectionObserver' in window) || imgs.length===0){imgs.forEach(function(img){if(img.dataset && img.dataset.src) img.src = img.dataset.src; img.classList.add('loaded');});return}
+                    var io = new IntersectionObserver(function(entries, obs){entries.forEach(function(entry){if(entry.isIntersecting){var img = entry.target; if(img.dataset && img.dataset.src) img.src = img.dataset.src; img.addEventListener('load', function(){ img.classList.add('loaded');}); obs.unobserve(img);}});},{rootMargin:'200px'});
+                    imgs.forEach(function(i){io.observe(i)});
+                }
+                function csrfFetch(url, opts){opts = opts||{}; opts.headers = opts.headers||{}; if(!opts.headers['X-CSRFToken']) opts.headers['X-CSRFToken'] = getCookie('csrftoken'); if(!opts.headers['X-Requested-With']) opts.headers['X-Requested-With']='XMLHttpRequest'; return fetch(url, opts);}
+                function initLikeButtons(){
+                    document.querySelectorAll('.like-btn').forEach(function(btn){btn.addEventListener('click', async function(e){var url = btn.dataset.url || btn.getAttribute('data-url'); if(!url){btn.classList.add('pulse-once'); setTimeout(function(){btn.classList.remove('pulse-once')},700); return;} try{btn.disabled=true; var res = await csrfFetch(url, {method:'POST'}); if(res.status===403){window.location='/login/?next='+encodeURIComponent(window.location.pathname);return;} if(!res.ok) throw new Error('Network'); var data = await res.json(); if(data.liked) btn.classList.add('liked'); else btn.classList.remove('liked'); var counter = document.querySelector(btn.dataset.counter || btn.getAttribute('data-counter')); if(counter && typeof data.likes_count!=='undefined') counter.textContent = data.likes_count; btn.classList.add('pulse-once'); setTimeout(function(){btn.classList.remove('pulse-once')},700);}catch(err){console.warn('Like failed',err);}finally{btn.disabled=false}})})}
+                document.addEventListener('DOMContentLoaded', function(){ initLazy(); initLikeButtons(); setTimeout(function(){document.querySelectorAll('.fade-in').forEach(function(el){el.classList.add('show')})},120); });
+            }catch(e){console.warn('design fallback init failed', e)}
+        })();
+        </script>
+    
+</body>
+</html>

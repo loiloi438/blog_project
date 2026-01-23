@@ -1,0 +1,257 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}{{ title }} - Blog Interactif{% endblock %}
+
+{% block extra_css %}
+<style>
+    .form-hero {
+        background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+        color: white;
+        padding: 3rem;
+        border-radius: 16px;
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+    
+    .form-hero h1 {
+        font-size: 2rem;
+        font-weight: 900;
+        margin-bottom: 0.5rem;
+    }
+    
+    .form-hero p {
+        opacity: 0.95;
+        margin-bottom: 0;
+        font-size: 1.05rem;
+    }
+    
+    .form-card {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-group {
+        margin-bottom: 2rem;
+    }
+    
+    .form-group label {
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 0.75rem;
+        display: block;
+        font-size: 1.05rem;
+    }
+    
+    .form-group input[type="text"],
+    .form-group textarea,
+    .form-group input[type="file"] {
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 0.875rem 1rem;
+        font-size: 1rem;
+        width: 100%;
+        transition: all 0.3s ease;
+        font-family: inherit;
+    }
+    
+    .form-group input[type="text"]:focus,
+    .form-group textarea:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        outline: none;
+    }
+    
+    .form-group textarea {
+        resize: vertical;
+        min-height: 200px;
+    }
+    
+    .form-group input[type="file"] {
+        padding: 1rem;
+        cursor: pointer;
+    }
+    
+    .form-group input[type="file"]::file-selector-button {
+        background: linear-gradient(135deg, #6366f1, #6366f1);
+        color: white;
+        border: none;
+        padding: 0.625rem 1.5rem;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        margin-right: 1rem;
+        transition: all 0.3s ease;
+    }
+    
+    .form-group input[type="file"]::file-selector-button:hover {
+        box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3);
+    }
+    
+    .invalid-feedback {
+        color: #dc2626;
+        font-weight: 600;
+        margin-top: 0.5rem;
+        display: block !important;
+    }
+    
+    .alert {
+        border-radius: 12px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-actions {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2.5rem;
+        padding-top: 2rem;
+        border-top: 2px solid #e2e8f0;
+    }
+    
+    .btn-submit {
+        background: linear-gradient(135deg, #6366f1, #6366f1);
+        color: white;
+        border: none;
+        padding: 0.875rem 2rem;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 25px rgba(99, 102, 241, 0.3);
+    }
+    
+    .btn-cancel {
+        background: white;
+        color: #6366f1;
+        border: 2px solid #6366f1;
+        padding: 0.875rem 2rem;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .btn-cancel:hover {
+        background: #f0f4ff;
+        transform: translateY(-2px);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-lg">
+    <!-- Hero Section -->
+    <div class="form-hero">
+        <h1>
+            {% if article %}
+            ✏️ Modifier l'article
+            {% else %}
+            📝 Créer un nouvel article
+            {% endif %}
+        </h1>
+        <p>
+            {% if article %}
+            Mettez à jour votre contenu et partagez vos modifications avec la communauté.
+            {% else %}
+            Partagez vos idées et inspirez la communauté!
+            {% endif %}
+        </p>
+    </div>
+
+    <!-- Form Card -->
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="form-card">
+                {% if form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <strong>Erreur!</strong>
+                    {% for error in form.non_field_errors %}
+                        <div>{{ error }}</div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <form method="post" enctype="multipart/form-data" novalidate>
+                    {% csrf_token %}
+                    
+                    {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}" class="form-label">
+                            {% if field.label %}
+                                {{ field.label }}
+                            {% endif %}
+                            {% if field.field.required %}
+                            <span style="color: #dc2626;">*</span>
+                            {% endif %}
+                        </label>
+                        
+                        {% if field.widget.input_type == 'textarea' %}
+                            <textarea 
+                                name="{{ field.name }}" 
+                                id="{{ field.id_for_label }}"
+                                {% if field.value %}value="{{ field.value }}"{% endif %}
+                                class="form-control"
+                                placeholder="{{ field.help_text }}"
+                            ></textarea>
+                        {% elif field.widget.input_type == 'file' %}
+                            <input 
+                                type="file" 
+                                name="{{ field.name }}" 
+                                id="{{ field.id_for_label }}"
+                                class="form-control"
+                                accept="image/*"
+                            >
+                            {% if field.help_text %}
+                            <small class="text-muted d-block mt-1">{{ field.help_text|safe }}</small>
+                            {% endif %}
+                        {% else %}
+                            <input 
+                                type="text" 
+                                name="{{ field.name }}" 
+                                id="{{ field.id_for_label }}"
+                                {% if field.value %}value="{{ field.value }}"{% endif %}
+                                class="form-control"
+                                placeholder="{{ field.label }}"
+                            >
+                        {% endif %}
+                        
+                        {% if field.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in field.errors %}
+                                <div><i class="fas fa-times-circle"></i> {{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-check-circle"></i>
+                            {% if article %}Mettre à jour{% else %}Publier{% endif %}
+                        </button>
+                        <a href="{% if article %}{% url 'article_detail' article.pk %}{% else %}{% url 'home' %}{% endif %}" class="btn-cancel">
+                            <i class="fas fa-times-circle"></i> Annuler
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

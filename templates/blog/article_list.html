@@ -1,0 +1,296 @@
+{% extends 'blog/base.html' %}
+{% load static humanize template_tags %}
+
+{% block title %}Articles - Blog Interactif{% endblock %}
+
+{% block extra_css %}
+<style>
+    .gallery-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    
+    .gallery-title {
+        font-size: 2.5rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, #6366f1, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 0.5rem;
+    }
+    
+    .gallery-subtitle {
+        color: #94a3b8;
+        font-size: 1.1rem;
+    }
+    
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        animation: fadeIn 0.6s ease;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .gallery-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+    
+    .gallery-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .gallery-image {
+        position: relative;
+        width: 100%;
+        height: 240px;
+        overflow: hidden;
+        background: linear-gradient(135deg, #6366f1, #ec4899);
+    }
+    
+    .gallery-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+    
+    .gallery-card:hover .gallery-image img {
+        transform: scale(1.1);
+    }
+    
+    .gallery-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(99, 102, 241, 0.3);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .gallery-card:hover .gallery-overlay {
+        opacity: 1;
+    }
+    
+    .gallery-content {
+        padding: 1.75rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .gallery-card-title {
+        font-size: 1.25rem;
+        font-weight: 800;
+        margin-bottom: 0.75rem;
+        color: #1e293b;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    
+    .gallery-card-meta {
+        font-size: 0.85rem;
+        color: #94a3b8;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .gallery-card-excerpt {
+        color: #475569;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        flex-grow: 1;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        font-size: 0.95rem;
+    }
+    
+    .gallery-card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 1rem;
+        border-top: 1px solid #e2e8f0;
+        gap: 1rem;
+    }
+    
+    .gallery-stats {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.85rem;
+        color: #64748b;
+    }
+    
+    .gallery-stat {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-weight: 600;
+    }
+    
+    .gallery-actions {
+        display: flex;
+        gap: 0.5rem;
+    }
+    
+    .gallery-btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.85rem;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+    }
+    
+    .gallery-read-btn {
+        background: linear-gradient(135deg, #6366f1, #6366f1);
+        color: white;
+        flex: 1;
+    }
+    
+    .gallery-read-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3);
+    }
+    
+    .filter-buttons {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .filter-btn {
+        padding: 0.75rem 1.5rem;
+        margin: 0.5rem;
+        border: 2px solid #e2e8f0;
+        background: white;
+        border-radius: 25px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: #334155;
+    }
+    
+    .filter-btn:hover,
+    .filter-btn.active {
+        background: linear-gradient(135deg, #6366f1, #ec4899);
+        color: white;
+        border-color: transparent;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-lg py-5">
+    <div class="gallery-header">
+        <h1 class="gallery-title">Galerie d'Articles</h1>
+        <p class="gallery-subtitle">Explorez tous nos articles et trouvez ce qui vous inspire</p>
+    </div>
+
+    {% if articles %}
+    <div class="gallery-grid">
+        {% for article in articles %}
+            <div class="card gallery-card">
+            <div class="gallery-image">
+                {% if article.cover_image %}
+                    {% with imgurl=article.cover_image.url %}
+                    <img class="lazy-img" data-src="{{ imgurl }}" src="{{ imgurl }}" alt="{{ article.title }}" onerror="this.onerror=null;this.src='https://picsum.photos/seed/{{ article.pk }}/800/600'">
+                    {% endwith %}
+                {% else %}
+                    {% article_image article 'large' as imgurl %}
+                    <img class="lazy-img" data-src="{{ imgurl }}" src="{{ imgurl }}" alt="{{ article.title }}" onerror="this.onerror=null;this.src='https://picsum.photos/seed/{{ article.pk }}/800/600'">
+                {% endif %}
+                <div class="gallery-overlay"></div>
+            </div>
+            
+            <div class="gallery-content">
+                <h5 class="gallery-card-title">{{ article.title }}</h5>
+                
+                <div class="gallery-card-meta">
+                    <span>
+                        <i class="fas fa-user-circle" style="color: #6366f1;"></i>
+                        <strong>{{ article.author.username }}</strong>
+                    </span>
+                    <span>
+                        <i class="fas fa-calendar-alt" style="color: #6366f1;"></i>
+                        {{ article.created_at|date:"d M Y" }}
+                    </span>
+                </div>
+                
+                <p class="gallery-card-excerpt">{{ article.content|truncatewords:25 }}</p>
+                
+                <div class="gallery-card-footer">
+                    <div class="gallery-stats">
+                        <span class="gallery-stat">
+                            <i class="fas fa-heart" style="color: #ec4899;"></i>
+                            {{ article.likes.count }}
+                        </span>
+                        <span class="gallery-stat">
+                            <i class="fas fa-comments" style="color: #6366f1;"></i>
+                            {{ article.comments.count }}
+                        </span>
+                    </div>
+                    
+                    <div class="gallery-actions">
+                        <a href="{% url 'article_detail' article.pk %}" class="gallery-btn gallery-read-btn">Lire</a>
+                        {% if user.is_authenticated and article.author == user or user.is_staff %}
+                        <a href="{% url 'article_edit' article.pk %}" class="gallery-btn" style="background: #f0f9ff; color: #0369a1; border: 1px solid #0369a1; padding: 0.5rem 0.75rem;" title="Modifier">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="{% url 'article_delete' article.pk %}" class="gallery-btn" style="background: #fef2f2; color: #991b1b; border: 1px solid #991b1b; padding: 0.5rem 0.75rem;" title="Supprimer">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="card">
+        <div class="card-body no-articles">
+            <i class="fas fa-inbox" style="font-size: 4rem; color: #cbd5e1; margin-bottom: 1rem; display: block;"></i>
+            <h2>Aucun article trouvé</h2>
+            <p class="text-muted">Soyez le premier à partager votre histoire!</p>
+            {% if user.is_authenticated %}
+            <a href="{% url 'article_create' %}" class="btn btn-primary mt-3">
+                <i class="fas fa-plus-circle"></i> Créer un nouvel article
+            </a>
+            {% else %}
+            <a href="{% url 'register' %}" class="btn btn-primary mt-3">
+                <i class="fas fa-user-plus"></i> S'inscrire pour commencer
+            </a>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

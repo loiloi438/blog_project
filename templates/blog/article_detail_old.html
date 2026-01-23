@@ -1,0 +1,183 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}{{ article.title }} - Blog Interactif{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <!-- Article Header -->
+        <div class="mb-4">
+            <h1 class="mb-3">{{ article.title }}</h1>
+            
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="article-meta">
+                    <strong>{{ article.author.username }}</strong>
+                    <span class="text-muted">le {{ article.created_at|date:"d/m/Y \à H:i" }}</span>
+                    {% if article.updated_at != article.created_at %}
+                    <span class="text-muted">(modifié le {{ article.updated_at|date:"d/m/Y \à H:i" }})</span>
+                    {% endif %}
+                </div>
+                
+                {% if user.is_authenticated and article.author == user or user.is_staff %}
+                <div class="article-actions">
+                    <a href="{% url 'article_edit' article.pk %}" class="btn btn-sm btn-outline-primary">✏️ Modifier</a>
+                    <a href="{% url 'article_delete' article.pk %}" class="btn btn-sm btn-outline-danger">🗑️ Supprimer</a>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Article Stats -->
+            <div class="d-flex gap-3 mb-3">
+                <div class="d-flex align-items-center gap-1">
+                    <form action="{% url 'toggle_like' article.pk %}" method="post" class="d-inline like-form" data-article-id="{{ article.pk }}">
+                        {% csrf_token %}
+                        <button type="submit" class="like-btn {% if user_likes %}liked{% endif %}" title="Aimer">
+                            {% if user_likes %}❤️{% else %}🤍{% endif %}
+                        </button>
+                    </form>
+                    <span class="likes-count"><strong class="likes-count-value">{{ article.likes.count }}</strong> j'aime{{ article.likes.count|pluralize }}</span>
+                </div>
+
+                <div class="text-muted">
+                    <strong>{{ article.comments.count }}</strong> commentaire{{ article.comments.count|pluralize }}
+                </div>
+            </div>
+        </div>
+
+        <!-- Article Cover Image -->
+        {% if article.cover_image %}
+        <img src="{{ article.cover_image.url }}" alt="{{ article.title }}" class="img-fluid rounded mb-4">
+        {% endif %}
+
+        <!-- Article Content -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <p style="line-height: 1.8; font-size: 1.05rem;">{{ article.content|linebreaks }}</p>
+            </div>
+        </div>
+
+        <!-- Comments Section -->
+        <div class="comment-section">
+            <h3 class="mb-4">💬 Commentaires ({{ article.comments.count }})</h3>
+
+            <!-- Add Comment Form -->
+            {% if user.is_authenticated %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Ajouter un commentaire</h5>
+                    <form method="post" action="{% url 'add_comment' article.pk %}" novalidate>
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            {{ comment_form.body }}
+                        </div>
+                        {% if comment_form.body.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ comment_form.body.errors }}
+                        </div>
+                        {% endif %}
+                        <button type="submit" class="btn btn-primary">Poster</button>
+                    </form>
+                </div>
+            </div>
+            {% else %}
+            <div class="alert alert-info">
+                <p class="mb-0">Vous devez être <a href="{% url 'login' %}">connecté</a> pour commenter. Vous n'avez pas de compte? <a href="{% url 'register' %}">S'inscrire</a></p>
+            </div>
+            {% endif %}
+
+            <!-- Comments List -->
+            {% if comments %}
+                {% include 'blog/comment_thread.html' with comments=comments %}
+            {% else %}
+            <div class="alert alert-light" role="alert">
+                <p class="mb-0 text-muted">Aucun commentaire pour le moment. Soyez le premier à commenter!</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="col-md-4">
+        <div class="card sticky-top" style="top: 20px;">
+            <div class="card-body">
+                <h5 class="card-title">À propos de l'auteur</h5>
+                <p class="mb-2">
+                    <strong>{{ article.author.username }}</strong>
+                </p>
+                {% if article.author.email %}
+                <p class="text-muted small mb-0">{{ article.author.email }}</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Related Links -->
+        <div class="card mt-3">
+            <div class="card-body">
+                <h5 class="card-title">Articles récents de l'auteur</h5>
+                {% for other_article in other_articles %}
+                <p class="mb-2">
+                    <a href="{% url 'article_detail' other_article.pk %}" class="text-decoration-none">{{ other_article.title|truncatewords:5 }}</a>
+                </p>
+                {% empty %}
+                <p class="text-muted small">Aucun autre article</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Gestion des likes avec AJAX
+document.querySelectorAll('.like-form').forEach(form => {
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const articleId = this.dataset.articleId;
+        const submitBtn = this.querySelector('.like-btn');
+        const likesCountValue = document.querySelector('.likes-count-value');
+        
+        try {
+            const response = await fetch(this.action, {
+                method: 'POST',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                }
+            });
+            
+            if (!response.ok) {
+                throw new Error('Erreur réseau');
+            }
+            
+            const data = await response.json();
+            
+            // Mettre à jour le bouton et le compteur
+            if (data.liked) {
+                submitBtn.classList.add('liked');
+                submitBtn.textContent = '❤️';
+            } else {
+                submitBtn.classList.remove('liked');
+                submitBtn.textContent = '🤍';
+            }
+            
+            // Mettre à jour le compteur de likes
+            likesCountValue.textContent = data.likes_count;
+            
+        } catch (error) {
+            console.error('Erreur:', error);
+            alert('Une erreur est survenue lors du traitement du like');
+        }
+    });
+});
+
+function toggleReplyForm(commentId) {
+    const form = document.getElementById('reply-form-' + commentId);
+    if (form.style.display === 'none' || form.style.display === '') {
+        form.style.display = 'block';
+        form.querySelector('textarea').focus();
+    } else {
+        form.style.display = 'none';
+    }
+}
+</script>
+{% endblock %}

@@ -155,8 +155,8 @@
         <div class="card search-result-card">
             {% if article.cover_image %}
                 <img src="{{ article.cover_image.url }}" alt="{{ article.title }}" class="search-result-image" loading="lazy">
-            {% else %}
-                <img src="https://source.unsplash.com/600x400/?{{ article.title|truncatewords:3|cut:' ' }},blog" alt="{{ article.title }}" class="search-result-image" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text={{ article.title|truncatewords:2|cut:\' \' }}'">
+                {% else %}
+                <img src="https://source.unsplash.com/600x400/?{{ article.title|truncatewords:3|slugify }},blog" alt="{{ article.title }}" class="search-result-image" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text={{ article.title|truncatewords:2|slugify }}'">
             {% endif %}
             
             <div class="search-result-content">

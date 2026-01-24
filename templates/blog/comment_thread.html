@@ -28,9 +28,15 @@
     {% endif %}
 
     <!-- Nested Replies -->
-    {% if comment.replies.all %}
-    <div class="mt-3">
-        {% include 'blog/comment_thread.html' with comments=comment.replies.all %}
+    {% if comment.replies.count > 0 %}
+    <div class="mt-2">
+        <button type="button" class="btn btn-sm btn-link show-replies-btn" id="show-replies-btn-{{ comment.pk }}" onclick="toggleReplies({{ comment.pk }})">
+            Voir {{ comment.replies.count }} réponse{% if comment.replies.count|pluralize %}s{% endif %}
+        </button>
+
+        <div id="replies-{{ comment.pk }}" class="replies-container" style="display: none; margin-left: 1rem; border-left: 2px solid #eef2ff; padding-left: 1rem;">
+            {% include 'blog/comment_thread.html' with comments=comment.replies.all %}
+        </div>
     </div>
     {% endif %}
 </div>

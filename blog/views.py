@@ -298,7 +298,8 @@ def comment_delete(request, pk):
 # ========== RECHERCHE (BONUS) ==========
 def search_articles(request):
     """Rechercher des articles"""
-    query = request.GET.get('q', '')
+    query = request.GET.get('q', '') or ''
+    query = query.strip()
     articles = Article.objects.filter(
         Q(title__icontains=query) | Q(content__icontains=query)
     ) if query else Article.objects.none()

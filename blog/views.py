@@ -268,10 +268,14 @@ def add_comment(request, pk):
             comment.article = article
             comment.author = request.user
 
-            # Si c'est une réponse
+            # Si c'est une réponse -> attacher toujours au commentaire racine
             if parent_id:
                 parent_comment = get_object_or_404(Comment, pk=parent_id)
-                comment.parent = parent_comment
+                # Si on répond à une réponse, attacher au parent racine (pas chaîner les parents)
+                if parent_comment.parent:
+                    comment.parent = parent_comment.parent
+                else:
+                    comment.parent = parent_comment
 
             comment.save()
             return redirect('article_detail', pk=article.pk)

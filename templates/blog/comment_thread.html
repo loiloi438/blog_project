@@ -27,17 +27,22 @@
     </form>
     {% endif %}
 
-    <!-- Nested Replies -->
-    {% if comment.replies.count > 0 %}
+    <!-- Nested Replies: show first 2 replies, allow showing the rest -->
+    {% with replies=comment.replies.all %}
+    {% if replies.count > 0 %}
     <div class="mt-2">
-        <button type="button" class="btn btn-sm btn-link show-replies-btn" id="show-replies-btn-{{ comment.pk }}" onclick="toggleReplies({{ comment.pk }})">
-            Voir {{ comment.replies.count }} réponse{% if comment.replies.count|pluralize %}s{% endif %}
-        </button>
+        <!-- show up to 1 reply inline -->
+        {% include 'blog/comment_thread.html' with comments=replies|slice:":1" %}
 
-        <div id="replies-{{ comment.pk }}" class="replies-container" style="display: none; margin-left: 1rem; border-left: 2px solid #eef2ff; padding-left: 1rem;">
-            {% include 'blog/comment_thread.html' with comments=comment.replies.all %}
-        </div>
+        {% if replies.count > 1 %}
+            <button type="button" class="btn btn-sm btn-link" id="show-more-{{ comment.pk }}" onclick="toggleMoreReplies({{ comment.pk }})">Voir {{ replies.count|add:'-1' }} autre{% if replies.count|add:'-1'|pluralize %}s{% endif %} réponse{% if replies.count|add:'-1'|pluralize %}s{% endif %}</button>
+
+            <div id="more-replies-{{ comment.pk }}" style="display: none; margin-left: 1rem; border-left: 2px solid #eef2ff; padding-left: 1rem;">
+                {% include 'blog/comment_thread.html' with comments=replies|slice:"1:" %}
+            </div>
+        {% endif %}
     </div>
     {% endif %}
+    {% endwith %}
 </div>
 {% endfor %}

@@ -510,5 +510,20 @@ function toggleReplies(commentId) {
         if (btn) btn.textContent = 'Voir ' + container.querySelectorAll('.comment').length + ' réponse' + (container.querySelectorAll('.comment').length > 1 ? 's' : '');
     }
 }
+
+function toggleMoreReplies(commentId) {
+    const container = document.getElementById('more-replies-' + commentId);
+    const btn = document.getElementById('show-more-' + commentId);
+    if (!container) return;
+    if (container.style.display === 'none' || container.style.display === '') {
+        container.style.display = 'block';
+        if (btn) btn.textContent = 'Cacher les réponses';
+    } else {
+        container.style.display = 'none';
+        // compute remaining count
+        const remaining = container.querySelectorAll('.comment').length;
+        if (btn) btn.textContent = 'Voir ' + remaining + ' autre' + (remaining > 1 ? 's' : '') + ' réponse' + (remaining > 1 ? 's' : '');
+    }
+}
 </script>
 {% endblock %}

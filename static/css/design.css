@@ -1,9 +1,10 @@
 /* Design additions complementing base.html inline styles */
 :root{
-  --primary:#6366f1;
-  --primary-dark:#4f46e5;
-  --secondary:#ec4899;
-  --bg-gradient: linear-gradient(135deg,#f8fafc 0%,#f1f5f9 100%);
+  /* Sober professional palette to match base template */
+  --primary:#274156;
+  --primary-dark:#17262e;
+  --secondary:#64748b;
+  --bg-gradient: linear-gradient(135deg,#f6f7f9 0%,#eef2f6 100%);
 }
 
 html,body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;}

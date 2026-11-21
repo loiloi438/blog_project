@@ -287,7 +287,7 @@ Voir `requirements.txt` pour la liste complète.
 
 ## 👤 Auteur
 
-Développé pour Gaetane MVIBUNDULU
+Développé par Trésor MOUANGA 
 
 ## 📜 Licence
 
